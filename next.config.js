@@ -4,6 +4,12 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  i18n: {
+    locales: ['en', 'es'],
+    defaultLocale: 'en',
+    localeDetection: true,
+  },
+  trailingSlash: true,
 }
 
 module.exports = nextConfig
