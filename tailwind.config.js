@@ -18,6 +18,7 @@ module.exports = {
         primary: "#585E70",
         secondary: "#142966",
         tertiary: "#2E5CE6",
+        fourth: "#7086E1",
       }),
       borderColor: ({ theme }) => ({
         ...theme('colors'),

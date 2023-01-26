@@ -4,13 +4,17 @@ import heroProfilePic from '../public/hero-profile.png';
 export default async function Page() {
     return (
         <>
-            <section className={'container mx-auto p-10 relative flex h-[calc(100vh-104px)]'}>
+            <section className={'container mx-auto p-10 relative flex h-[calc(100vh-104px)] items-center justify-center'}>
                 <div className={'flex items-center justify-center'}>
                     <div className={'container mx-auto'}>
                         <div className={'flex gap-1 flex-col'}>
-                            <h1 className={'flex-1 text-5xl font-semibold text-primary'}>Hi, I'm Cristian.</h1>
-                            <h1 className={'flex-1 text-5xl font-semibold text-primary max-w-prose'}>Software Engineer and</h1>
-                            <h1 className={'italic flex-1 text-5xl font-semibold text-tertiary max-w-prose'}>Web Developer.</h1>
+                            <div className={'flex'}>
+                                <h1 className={'text-5xl text-primary pr-2'}>Hi, I'm </h1>
+                                <h1 className={'text-5xl font-semibold text-primary max-w-prose'}> Cristian</h1>
+                                <h1 className={'text-5xl text-primary max-w-prose'}>.</h1>
+                            </div>
+                            <h1 className={'flex-1 text-5xl font-semibold text-tertiary max-w-prose'}>Software Engineer &</h1>
+                            <h1 className={'italic flex-1 text-5xl font-semibold text-primary max-w-prose'}>Web Developer.</h1>
                         </div>
                         <div className={'my-3'}>
                             <p className={'flex-1 text-gray-600 max-w-prose'}>
@@ -49,8 +53,9 @@ export default async function Page() {
                             </div>
                         </div>
                     </div>
-                    <div className={'container mx-auto'}>
+                    <div className={'container mx-auto flex items-center justify-center'}>
                         <Image
+                            className={'max-w-md m-8 content-center'}
                             src={heroProfilePic}
                             alt="Picture of the author"
                         />
@@ -74,11 +79,197 @@ export default async function Page() {
                     </a>
                 </div>
             </section>
-            <section className={'flex justify-center h-screen'}>
+            <section id="what-do-i-do" className={'flex justify-center h-screen'}>
                 <div className={'container p-10'}>
-                    <h1 className={'text-5xl font-semibold'}>
-                        What I Do?
+                    <h1 className={'text-5xl font-semibold text-primary'}>
+                        What Do I do?
                     </h1>
+                    <div className={'flex items-center justify-center p-10'}>
+                        <div className={'flex flex-col md:flex-row gap-10'}>
+                            <a className={'flex-1 bg-primary text-white max-w-md hover:animate-pulse'} href={'#'}>
+                                <div className={'relative h-10 w-full'}>
+                                    <div className={'absolute top-2.5 right-2.5'}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div className={'p-8 h-[calc(60vh)] flex flex-col'}>
+                                    <div className={'flex-auto'}>
+                                        <h2 className={'text-3xl font-semibold'}>Software <br/> Design</h2>
+                                    </div>
+                                    <div className={'flex-auto my-3 flex items-center hover:animate-pulse'}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-24 h-full">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zm-7.518-.267A8.25 8.25 0 1120.25 10.5M8.288 14.212A5.25 5.25 0 1117.25 10.5" />
+                                        </svg>
+                                    </div>
+                                    <div className={'flex-auto flex items-center'}>
+                                        <p className={'text-2xl'}>Software Architecture, AWS Services, UI/UX.</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a className={'flex-1 bg-tertiary text-white max-w-md hover:animate-pulse'} href={'#'}>
+                                <div className={'relative h-10 w-full'}>
+                                    <div className={'absolute top-2.5 right-2.5'}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div className={'p-8 h-[calc(60vh)] flex flex-col'}>
+                                    <div className={'flex-auto'}>
+                                        <h2 className={'text-3xl font-semibold'}>Applications <br/> Development</h2>
+                                    </div>
+                                    <div className={'flex-auto my-3 flex items-center hover:animate-pulse'}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-24 h-full">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                                        </svg>
+                                    </div>
+                                    <div className={'flex-auto flex items-center'}>
+                                        <p className={'text-2xl'}>Software Architecture, AWS Services, UI/UX.</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a className={'flex-1 bg-secondary text-white max-w-md hover:animate-pulse'} href={'#'}>
+                                <div className={'relative h-10 w-full'}>
+                                    <div className={'absolute top-2.5 right-2.5'}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div className={'p-8 h-[calc(60vh)] flex flex-col'}>
+                                    <div className={'flex-auto'}>
+                                        <h2 className={'text-3xl font-semibold'}>Wordpress <br/> Development</h2>
+                                    </div>
+                                    <div className={'flex-auto my-3 flex items-center hover:animate-pulse'}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-24 h-full">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                                        </svg>
+                                    </div>
+                                    <div className={'flex-auto flex items-center'}>
+                                        <p className={'text-2xl'}>Software Architecture, AWS Services, UI/UX.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="works" className={'flex justify-center h-screen'}>
+                <div className={'container p-10'}>
+                    <h1 className={'text-5xl font-semibold text-primary'}>
+                        Works
+                    </h1>
+                    <div className={'flex items-center p-10'}>
+                        <div className={'flex flex-col md:flex-row gap-10'}>
+                            <div className={'flex-1 max-w-md'}>
+                                <div className={'p-5 h-[calc(30vh)]'}>
+                                    <a className={'flex text-primary hover:text-secondary'} href={'#'}>
+                                        <div className={'flex-1'}>
+                                            <h2 className={'text-3xl font-semibold'}>Senior Software Engineer</h2>
+                                        </div>
+                                        <div className={'justify-self-end'}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                                            </svg>
+                                        </div>
+                                    </a>
+                                    <p className={'text-2xl text-secondary my-2'}>Dualboot Partners</p>
+                                    <p className={'text-2xl text-fourth'}>Jun 2019 - Present.</p>
+                                </div>
+                            </div>
+                            <div className={'flex-1 max-w-md'}>
+                                <div className={'p-5 h-[calc(30vh)]'}>
+                                    <a className={'flex text-primary hover:text-secondary'} href={'#'}>
+                                        <div className={'flex-1'}>
+                                            <h2 className={'text-3xl font-semibold'}>Senior Software Engineer</h2>
+                                        </div>
+                                        <div className={'justify-self-end'}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                                            </svg>
+                                        </div>
+                                    </a>
+                                    <p className={'text-2xl text-secondary my-2'}>Cafeto Software</p>
+                                    <p className={'text-2xl text-fourth'}>Jun 2019 - Present.</p>
+                                </div>
+                            </div>
+                            <div className={'flex-1 max-w-md'}>
+                                <div className={'p-5 h-[calc(30vh)]'}>
+                                    <a className={'flex text-primary hover:text-secondary'} href={'#'}>
+                                        <div className={'flex-1'}>
+                                            <h2 className={'text-3xl font-semibold'}>Senior Software Engineer</h2>
+                                        </div>
+                                        <div className={'justify-self-end'}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                                            </svg>
+                                        </div>
+                                    </a>
+                                    <p className={'text-2xl text-secondary my-2'}>Globant (c)</p>
+                                    <p className={'text-2xl text-fourth'}>Jun 2019 - Present.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={'flex'}>
+                        <div className={'flex-1 max-w-md'}>
+                            <a href={'#'} className={'text-primary dark:text-white text-3xl hover:text-secondary'}>
+                                <div className="flex items-center justify-center">
+                                    <p className={'px-2'}>Download my Resume</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="have-a-project" className={'flex justify-center h-screen bg-fourth'}>
+                <div className={'container p-10'}>
+                    <div className={'flex items-center justify-center'}>
+                        <div className={'flex-1 max-w-md'}>
+                            <h1 className={'text-5xl font-semibold text-primary'}>
+                                Have a Project?
+                            </h1>
+                            <p className={'text-2xl text-white pr-10 my-2'}>
+                                I'm available for freelance work. If you have a project you'd like to get started, think you need my help with something or just fancy saying hello, then get in touch.
+                            </p>
+                        </div>
+                        <div className={'flex-1 max-w-md'}>
+                            <form>
+                                <label className={'block'}>
+                                    <span className="block text-sm font-medium text-white">
+                                        Name
+                                    </span>
+                                    <input className="border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"/>
+                                </label>
+                                <label className={'block'}>
+                                    <span className="block text-sm font-medium text-white">
+                                        E-Mail
+                                    </span>
+                                    <input className="border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"/>
+                                </label>
+                                <label className={'block'}>
+                                    <span className="block text-sm font-medium text-white">
+                                        Message
+                                    </span>
+                                    <textarea id="w3review" name="w3review" rows={4} cols={50}>
+                                    </textarea>
+                                </label>
+                                <button className={'font-semibold text-primary dark:text-white hover:text-white'}>
+                                    <div className="flex items-center justify-center gap-1">
+                                        <p className={'text-2xl'}>Send</p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8">
+                                            <path strokeLinecap={'round'} strokeLinejoin={'round'} d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </section>
         </>
