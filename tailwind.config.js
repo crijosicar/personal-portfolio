@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', ...fontFamily.sans],
+        sans: ['var(--font-josefin-sans)', ...fontFamily.sans],
       },
       backgroundColor: (theme) => ({
         ...theme("colors"),
@@ -29,7 +29,7 @@ module.exports = {
         primary: "#142966",
         secondary: "#7592EA",
         tertiary: "#2E5CE6",
-        fourth: "#A7A9B1",
+        fourth: "#4F5364",
         fifth: "#2447B3",
       },
     },

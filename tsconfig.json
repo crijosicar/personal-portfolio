@@ -22,7 +22,14 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/entities/*": ["entities/*"],
+      "@/lib/*": ["lib/*"],
+      "@/queries/*": ["queries/*"],
+      "@/hooks/*": ["hooks/*"],
+    }
   },
   "include": [
     "next-env.d.ts",

@@ -1,0 +1,56 @@
+[debug] [2023-02-19T21:51:37.246Z] ----------------------------------------------------------------------
+[debug] [2023-02-19T21:51:37.247Z] Command:       /Users/cristiansierra/.nvm/versions/node/v18.12.0/bin/node /Users/cristiansierra/.nvm/versions/node/v18.12.0/bin/firebase deploy --only hosting
+[debug] [2023-02-19T21:51:37.247Z] CLI Version:   11.23.1
+[debug] [2023-02-19T21:51:37.247Z] Platform:      darwin
+[debug] [2023-02-19T21:51:37.247Z] Node Version:  v18.12.0
+[debug] [2023-02-19T21:51:37.249Z] Time:          Sun Feb 19 2023 16:51:37 GMT-0500 (Eastern Standard Time)
+[debug] [2023-02-19T21:51:37.249Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-02-19T21:51:37.288Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-02-19T21:51:37.289Z] > authorizing via signed-in user (csierrac09@gmail.com)
+[debug] [2023-02-19T21:51:37.289Z] [iam] checking project cristian-sierra for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-02-19T21:51:37.290Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/cristian-sierra:testIamPermissions [none]
+[debug] [2023-02-19T21:51:37.290Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/cristian-sierra:testIamPermissions x-goog-quota-user=projects/cristian-sierra
+[debug] [2023-02-19T21:51:37.290Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/cristian-sierra:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-02-19T21:51:37.785Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/cristian-sierra:testIamPermissions 200
+[debug] [2023-02-19T21:51:37.786Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/cristian-sierra:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-02-19T21:51:37.786Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cristian-sierra [none]
+[debug] [2023-02-19T21:51:38.271Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cristian-sierra 200
+[debug] [2023-02-19T21:51:38.271Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cristian-sierra {"projectId":"cristian-sierra","projectNumber":"966452609471","displayName":"cristian-sierra","name":"projects/cristian-sierra","resources":{"hostingSite":"cristian-sierra","realtimeDatabaseInstance":"cristian-sierra-default-rtdb","storageBucket":"cristian-sierra.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_755723e4-7aa7-4b65-8298-784091214fa7"}
+[debug] [2023-02-19T21:51:47.938Z] Error: Build failed because of webpack errors
+    at /Users/cristiansierra/IdeaProjects/personal-portfolio/node_modules/next/dist/build/index.js:578:29
+    at async Span.traceAsyncFn (/Users/cristiansierra/IdeaProjects/personal-portfolio/node_modules/next/dist/trace/trace.js:79:20)
+    at async build (/Users/cristiansierra/IdeaProjects/personal-portfolio/node_modules/next/dist/build/index.js:66:29)
+    at async build (/Users/cristiansierra/.nvm/versions/node/v18.12.0/lib/node_modules/firebase-tools/lib/frameworks/next/index.js:55:5)
+    at async prepareFrameworks (/Users/cristiansierra/.nvm/versions/node/v18.12.0/lib/node_modules/firebase-tools/lib/frameworks/index.js:248:108)
+    at async deploy (/Users/cristiansierra/.nvm/versions/node/v18.12.0/lib/node_modules/firebase-tools/lib/deploy/index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-02-19T21:52:42.728Z] ----------------------------------------------------------------------
+[debug] [2023-02-19T21:52:42.729Z] Command:       /Users/cristiansierra/.nvm/versions/node/v18.12.0/bin/node /Users/cristiansierra/.nvm/versions/node/v18.12.0/bin/firebase deploy --only hosting
+[debug] [2023-02-19T21:52:42.730Z] CLI Version:   11.23.1
+[debug] [2023-02-19T21:52:42.730Z] Platform:      darwin
+[debug] [2023-02-19T21:52:42.730Z] Node Version:  v18.12.0
+[debug] [2023-02-19T21:52:42.731Z] Time:          Sun Feb 19 2023 16:52:42 GMT-0500 (Eastern Standard Time)
+[debug] [2023-02-19T21:52:42.731Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-02-19T21:52:42.772Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-02-19T21:52:42.772Z] > authorizing via signed-in user (csierrac09@gmail.com)
+[debug] [2023-02-19T21:52:42.772Z] [iam] checking project cristian-sierra for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-02-19T21:52:42.773Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/cristian-sierra:testIamPermissions [none]
+[debug] [2023-02-19T21:52:42.773Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/cristian-sierra:testIamPermissions x-goog-quota-user=projects/cristian-sierra
+[debug] [2023-02-19T21:52:42.773Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/cristian-sierra:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-02-19T21:52:43.118Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/cristian-sierra:testIamPermissions 200
+[debug] [2023-02-19T21:52:43.119Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/cristian-sierra:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-02-19T21:52:43.119Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cristian-sierra [none]
+[debug] [2023-02-19T21:52:43.457Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cristian-sierra 200
+[debug] [2023-02-19T21:52:43.458Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cristian-sierra {"projectId":"cristian-sierra","projectNumber":"966452609471","displayName":"cristian-sierra","name":"projects/cristian-sierra","resources":{"hostingSite":"cristian-sierra","realtimeDatabaseInstance":"cristian-sierra-default-rtdb","storageBucket":"cristian-sierra.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_755723e4-7aa7-4b65-8298-784091214fa7"}
+[debug] [2023-02-19T21:52:49.969Z] Error: Build failed because of webpack errors
+    at /Users/cristiansierra/IdeaProjects/personal-portfolio/node_modules/next/dist/build/index.js:578:29
+    at async Span.traceAsyncFn (/Users/cristiansierra/IdeaProjects/personal-portfolio/node_modules/next/dist/trace/trace.js:79:20)
+    at async build (/Users/cristiansierra/IdeaProjects/personal-portfolio/node_modules/next/dist/build/index.js:66:29)
+    at async build (/Users/cristiansierra/.nvm/versions/node/v18.12.0/lib/node_modules/firebase-tools/lib/frameworks/next/index.js:55:5)
+    at async prepareFrameworks (/Users/cristiansierra/.nvm/versions/node/v18.12.0/lib/node_modules/firebase-tools/lib/frameworks/index.js:248:108)
+    at async deploy (/Users/cristiansierra/.nvm/versions/node/v18.12.0/lib/node_modules/firebase-tools/lib/deploy/index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
