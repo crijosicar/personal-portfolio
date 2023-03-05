@@ -1,4 +1,4 @@
-import { Inter } from '@next/font/google';
+import { Inter } from "next/font/google";
 import React, { ReactNode } from "react";
 import './globals.css';
 import Link from "next/link";

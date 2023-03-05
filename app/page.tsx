@@ -1,14 +1,20 @@
 import Image from 'next/image';
 import Link from "next/link";
 import React from "react";
-import _, {find, get, identity, isEmpty, map, pickBy} from "lodash";
+import _, {entries, find, get, identity, isEmpty, pickBy, reduce} from "lodash";
 import ContactForm from "./components/contact-form";
-import heroProfilePic from '../public/hero-profile.png';
 import ScrollWrapperProvider from "./components/scroll-wrapper";
 import ScrollToBtn from "./components/scroll-to-btn";
 import {getPageBySlug} from "@/queries/pages/get-page-by-slug";
-import {ContentData, DocumentChild, Section} from "@/entities/page.entity";
+import {DocumentChild, Section} from "@/entities/page.entity";
 import {ContentType} from "@/entities/constant";
+
+enum HomePageSectionName {
+    HERO = 'Hero | Home',
+    WHAT_CAN_I_DO = 'What do I do | Home',
+    HAVE_A_PROJECT = 'Have a Project? | Home',
+    WORKS = 'Works | Home',
+};
 
 const getFieldByLabel = (contents: DocumentChild[], label: string) => {
     const fieldsPathMapping = {
@@ -36,14 +42,54 @@ const getSectionContent = (sectionName: HomePageSectionName, sections: Section[]
         .value();
 };
 
-enum HomePageSectionName {
-    HERO = 'Hero | Home',
+const sectionsFieldsMapping = {
+    [HomePageSectionName.HERO]: {
+        profilePicture: 'Profile Picture | Hero',
+        linkedIn: 'LinkedIn',
+        github: 'Github',
+        whatsapp: 'WhatsApp',
+    },
+    [HomePageSectionName.WHAT_CAN_I_DO]: {
+        webDevelopment: 'Web Development | What do I do',
+        fullstackDevelopment: 'Fullstack Development | What do I do',
+        cloudEngineering: 'Cloud Engineering | What do I do',
+    },
+    [HomePageSectionName.HAVE_A_PROJECT]: {},
+    [HomePageSectionName.WORKS]: {},
 }
+
+function getMappedSectionContent<T>(sectionName: HomePageSectionName, sections: Section[]) {
+    const filteredSectionContent = getSectionContent(sectionName, sections);
+    const sectionFields = entries(sectionsFieldsMapping[sectionName]);
+    const mappedSectionContent = reduce(sectionFields, (acc, [fieldName, key]) => {
+        const fieldValue = getFieldByLabel(filteredSectionContent, key);
+        return {
+            ...acc,
+            [fieldName]: fieldValue,
+        };
+    }, {});
+
+    return mappedSectionContent as T;
+}
+
+type HeroSectionContent = {
+    profilePicture: string;
+    linkedIn: string;
+    github: string;
+    whatsapp: string;
+};
+
+type WhatCanIDoSectionContent = {
+    profilePicture: string;
+};
 
 export default async function Page() {
     const pageData = await getPageBySlug('home');
     const sections = get(pageData, 'sections', []) as Section[];
-    const heroSectionContentDocument = getSectionContent(HomePageSectionName.HERO, sections);
+    const heroSectionContent = getMappedSectionContent<HeroSectionContent>(HomePageSectionName.HERO, sections);
+    const whatCanIDoSectionContent = getMappedSectionContent<WhatCanIDoSectionContent>(HomePageSectionName.WHAT_CAN_I_DO, sections);
+
+    console.log(JSON.stringify({ whatCanIDoSectionContent }, null, 2));
 
     return (
         <>
@@ -68,7 +114,7 @@ export default async function Page() {
                             </div>
                             <div className={'flex gap-5'}>
                                 <div>
-                                    <Link href={'#'} className={'flex-1 mx-0.5'}>
+                                    <Link href={heroSectionContent.linkedIn} target={'_blank'} className={'flex-1 mx-0.5'}>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                              viewBox="0 0 448 512"
                                              className="w-7 h-7 font-semibold text-tertiary dark:text-white hover:text-secondary">
@@ -78,7 +124,7 @@ export default async function Page() {
                                     </Link>
                                 </div>
                                 <div>
-                                    <Link href={'#'} className={'flex-1 mx-0.5'}>
+                                    <Link href={heroSectionContent.github} target={'_blank'} className={'flex-1 mx-0.5'}>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"
                                              className="w-7 h-7 font-semibold text-tertiary dark:text-white hover:text-secondary">
                                             <path fill="currentColor"
@@ -87,7 +133,7 @@ export default async function Page() {
                                     </Link>
                                 </div>
                                 <div>
-                                    <Link href={'#'} className={'flex-1 mx-0.5'}>
+                                    <Link href={heroSectionContent.whatsapp} target={'_blank'} className={'flex-1 mx-0.5'}>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
                                              className="w-7 h-7 font-semibold text-tertiary dark:text-white hover:text-secondary">
                                             <path fill="currentColor"
@@ -100,9 +146,9 @@ export default async function Page() {
                         <div className={'container mx-auto flex items-center justify-center'}>
                             <Image
                                 className={'max-w-md m-8 content-center'}
-                                src={getFieldByLabel(heroSectionContentDocument, "Profile Picture | Hero")}
-                                width={100}
-                                height={100}
+                                width={200}
+                                height={200}
+                                src={heroSectionContent.profilePicture}
                                 alt="Picture of the author"
                             />
                         </div>
