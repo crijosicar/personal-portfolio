@@ -2,6 +2,10 @@ import Link from "next/link";
 import HireMeForm from "../hire-me/components/hire-me-form";
 import React from "react";
 
+export const metadata = {
+    title: 'About | Cristians Software Engineers',
+}
+
 export default async function Page() {
     return (
         <section id={'about'} className={'flex justify-center h-screen bg-fourth'}>

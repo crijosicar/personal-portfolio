@@ -54,3 +54,9 @@ export type DataData = {
     url?:   string;
     title?: string;
 }
+
+export type PageBaseProps = {
+    params: { slug: string };
+    searchParams: { [key: string]: string | string[] | undefined };
+    [index: string]: any;
+};

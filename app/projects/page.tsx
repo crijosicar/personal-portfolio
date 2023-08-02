@@ -1,11 +1,11 @@
 export const metadata = {
-    title: 'Shelf | Cristians Software Engineers',
+    title: "Services | Cristian's Software Engineers",
 }
 
 export default async function Page() {
     return (
         <h1 className="text-3xl font-bold">
-            Shelf
+            Projects
         </h1>
     );
 }

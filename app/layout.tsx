@@ -47,7 +47,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                                 className={'flex-1 mx-0.5 text-fourth'}>
                               hello@cristiansierra.dev
                           </Link>
-                          <p className={'text-fourth'}>40 Lemon Grass St</p>
+                          <p className={'text-fourth'}></p>
                           <Link href={'tel:+15482551056'} className={'text-fourth'}>+1-548-255-1056</Link>
                           <div className={'flex gap-5 my-3'}>
                               <Link href={'#'} className={'mx-0.5 text-fourth'}>
@@ -75,7 +75,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                           </div>
                       </div>
                       <div className={'flex-1 flex flex-col gap-5'}>
-                          <h1 className={'text-2xl font-bold text-fourth'}>
+                          <h1 className={'text-2xl font-bold text-primary'}>
                               Work Smarter, <br/>
                               Not Harder.
                           </h1>
@@ -83,7 +83,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                       </div>
                   </div>
                   <div className={'flex justify-start'}>
-                      <Link href={'/'} className="font-semibold text-fourth text-primary dark:text-white hover:text-secondary">
+                      <Link href={'/'} className="font-semibold text-fourth dark:text-white hover:text-secondary">
                           Made with  ❤️ from, CRISTIAN S.
                       </Link>
                   </div>

@@ -1,9 +1,8 @@
 import {gql} from '@apollo/client'
 import gqlCoreAPIClient from "@/lib/apollo-coreapi-client";
 import {get} from "lodash";
-import {PageBase} from "@/entities/page.entity";
 
-export const findPageBySlug = gql`
+export const postContact = gql`
 query GetPageBySlug($slug: String!) {
   page(where: { slug: $slug }) {
     id
@@ -28,13 +27,11 @@ query GetPageBySlug($slug: String!) {
 }
 `
 
-export const getPageBySlug = async (slug: string): Promise<PageBase> => {
+export const createContact = async (payload: object): Promise<unknown> => {
     const response = await gqlCoreAPIClient.query({
-        query: findPageBySlug,
-        variables: {
-            slug,
-        },
+        query: postContact,
+        variables: payload,
     });
 
-    return get(response, 'data.page', {}) as PageBase;
+    return get(response, 'data.page', {});
 }

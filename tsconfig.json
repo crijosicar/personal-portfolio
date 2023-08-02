@@ -29,6 +29,8 @@
       "@/lib/*": ["lib/*"],
       "@/queries/*": ["queries/*"],
       "@/hooks/*": ["hooks/*"],
+      "@/app/*": ["app/*"],
+      "@/assets/*": ["assets/*"],
     }
   },
   "include": [
