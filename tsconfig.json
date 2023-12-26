@@ -25,12 +25,24 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/entities/*": ["entities/*"],
-      "@/lib/*": ["lib/*"],
-      "@/queries/*": ["queries/*"],
-      "@/hooks/*": ["hooks/*"],
-      "@/app/*": ["app/*"],
-      "@/assets/*": ["assets/*"],
+      "@/components/*": [
+        "src/components/*"
+      ],
+      "@/entities/*": [
+        "src/entities/*"
+      ],
+      "@/lib/*": [
+        "src/lib/*"
+      ],
+      "@/queries/*": [
+        "src/queries/*"
+      ],
+      "@/app/*": [
+        "src/app/*"
+      ],
+      "@/assets/*": [
+        "src/assets/*"
+      ]
     }
   },
   "include": [

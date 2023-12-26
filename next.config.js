@@ -1,14 +1,12 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  swcMinify: true,
-  reactStrictMode: true,
-  experimental: {
-    appDir: true,
-  },
-  trailingSlash: true,
-  images: {
-    domains: ['localhost'],
-  },
-}
+const {PHASE_DEVELOPMENT_SERVER} = require('next/constants')
 
-module.exports = nextConfig
+module.exports = async (phase) => {
+    const domains = phase === PHASE_DEVELOPMENT_SERVER ? ['localhost', 'fastly.picsum.photos'] : [];
+
+    return {
+        swcMinify: true,
+        reactStrictMode: true,
+        trailingSlash: true,
+        images: {domains},
+    }
+}
