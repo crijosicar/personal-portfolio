@@ -245,7 +245,7 @@ export default async function Page() {
                 <div className={'p-10'}>
                     <div className={'flex justify-center items-center p-10'}>
                         <div className={'flex flex-col md:flex-row'}>
-                            <div className={''}>
+                            <div>
                                 <Link href={resumeUrl} target="_blank" download>
                                     <h1 className={'text-5xl font-semibold text-white hover:animate-pulse'}>
                                         <div className="flex items-center justify-center">
@@ -299,7 +299,15 @@ export default async function Page() {
             </section>
             {/*CLIENTS SECTION*/}
             <section id={'clients'} className={'w-full bg-fourth'}>
-                <div className={'p-20'}>
+                <div className="flex items-center justify-center">
+                    <p className={'text-5xl font-semibold text-white'}>Clients</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                         stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round"
+                              d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z"/>
+                    </svg>
+                </div>
+                <div className={'px-10 py-5'}>
                     <HomeClientsCarousel/>
                 </div>
             </section>
