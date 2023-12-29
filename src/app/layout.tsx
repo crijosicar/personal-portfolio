@@ -7,6 +7,8 @@ import {BaseLayoutProps} from "@/entities/base-layout";
 import Link from "next/link";
 
 export default function RootLayout({children}: BaseLayoutProps) {
+    const year = new Date().getFullYear();
+
     return (
         <html lang="en" className={`${inter.variable} font-inter`}>
         <head/>
@@ -56,7 +58,7 @@ export default function RootLayout({children}: BaseLayoutProps) {
                                     Work Smarter, <br/>
                                     Peace.
                                 </h1>
-                                <p>(C) 2022 By Cristian Sierra, All Rights Reserved.</p>
+                                <p>(C) {year} By Cristian Sierra, All Rights Reserved.</p>
                             </div>
                         </div>
                         <div className={'flex justify-start'}>
