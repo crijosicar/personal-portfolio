@@ -1,6 +1,6 @@
 'use client';
 
-import {Badge, Card} from "keep-react";
+import {Card} from "keep-react";
 import Image from "next/image";
 import React from "react";
 

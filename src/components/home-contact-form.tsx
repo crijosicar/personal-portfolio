@@ -13,7 +13,7 @@ type HomeContactForm = {
     message: string,
 };
 
-const contactValidationSchema = yup.object({
+const contactValidationSchema = yup.object().shape({
     fullName: yup.string().label('Name').required(),
     email: yup.string().label('Email').email().required(),
     message: yup.string().label('Message').required(),
@@ -23,23 +23,39 @@ export default function HomeContactForm() {
     const refHomeContactFrom = useRef();
     const [showModal, setShowModal] = useState(false);
 
-    const {reset, control, handleSubmit, formState: { errors, isSubmitSuccessful }} = useForm<HomeContactForm>(
+    const {reset, control, handleSubmit, formState: { errors }} = useForm<HomeContactForm>(
         {
-            resolver: yupResolver(contactValidationSchema)
+            resolver: yupResolver(contactValidationSchema),
+            defaultValues: {
+                fullName: '',
+                email: '',
+                message: '',
+            },
         }
     );
 
-    const onSubmit: SubmitHandler<HomeContactForm> = (data) => {
-        console.log({ isSubmitSuccessful });
+    const onSubmit: SubmitHandler<HomeContactForm> = async (data: HomeContactForm) => {
+        const response = await fetch('/api/contacts', {
+            method: "POST",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data)
+        });
+        const parsedResponse = await response.json();
 
-        if (isSubmitSuccessful) {
-            setShowModal(true);
-            reset({ fullName: '', email: '', message: '' });
-        }
+        console.log("onSubmit => ", { parsedResponse });
+
+        // if(response.status === 200) {
+        //     setShowModal(true);
+        //     reset();
+        // }
     };
 
     const closeModal = () => {
-        setShowModal(!showModal);
+        setShowModal(false);
+        console.log('closeModal');
     };
 
     return (
@@ -76,8 +92,7 @@ export default function HomeContactForm() {
                         <Controller
                             name="fullName"
                             control={control}
-                            defaultValue=""
-                            render={({field: {onChange, onBlur, value}}) => (
+                            render={({field: {onChange: onChangeFullName, onBlur, value, ref}}) => (
                                 <TextInput
                                     id="fullName"
                                     name="fullName"
@@ -91,8 +106,11 @@ export default function HomeContactForm() {
                                     helperText={errors?.fullName ? errors.fullName.message : ''}
                                     icon={errors?.fullName ? <WarningCircle size={20} color="#FF574D"/> : null}
                                     onBlur={onBlur}
-                                    handleOnChange={(e) => onChange(e.target.value)}
+                                    handleOnChange={(e) => {
+                                        onChangeFullName(e.target.value);
+                                    }}
                                     value={value}
+                                    ref={ref}
                                 />
                             )}
                         />
@@ -102,8 +120,7 @@ export default function HomeContactForm() {
                         <Controller
                             name="email"
                             control={control}
-                            defaultValue=""
-                            render={({field: {onChange, onBlur, value}}) => (
+                            render={({field: {onChange: onChangeEmail, onBlur, value, ref}}) => (
                                 <TextInput
                                     id="email"
                                     name="email"
@@ -117,8 +134,11 @@ export default function HomeContactForm() {
                                     helperText={errors?.email ? errors.email.message : ''}
                                     icon={errors?.email ? <WarningCircle size={20} color="#FF574D"/> : null}
                                     onBlur={onBlur}
-                                    handleOnChange={(e) => onChange(e.target.value)}
+                                    handleOnChange={(e) => {
+                                        onChangeEmail(e.target.value);
+                                    }}
                                     value={value}
+                                    ref={ref}
                                 />
                             )}
                         />
@@ -128,8 +148,7 @@ export default function HomeContactForm() {
                         <Controller
                             name="message"
                             control={control}
-                            defaultValue=""
-                            render={({field: {onChange, onBlur, value}}) => (
+                            render={({field: {onChange: onChangeMessage, onBlur, value, ref}}) => (
                                 <Textarea
                                     id="message"
                                     name="message"
@@ -141,22 +160,24 @@ export default function HomeContactForm() {
                                     rows={4}
                                     helperText={errors?.message ? errors.message.message : ''}
                                     onBlur={onBlur}
-                                    onChange={(e) => onChange(e.target.value)}
+                                    onChange={(e) => {
+                                        onChangeMessage(e.target.value);
+                                    }}
                                     value={value}
+                                    ref={ref}
                                 />
                             )}
                         />
                     </div>
                     <Button size="xl"
                             type="text"
-                            color="info"
-                            className="border border-[#142966] rounded-none hover:bg-secondary hover:text-white"
                             onClick={() => {
-                                refHomeContactFrom?.current?.dispatchEvent(new Event('submit', {
-                                    cancelable: true,
-                                    bubbles: true
-                                }));
-                            }}>
+                                refHomeContactFrom.current && refHomeContactFrom.current.dispatchEvent(
+                                    new Event("submit", { cancelable: true, bubbles: true })
+                                );
+                            }}
+                            color="info"
+                            className="border border-[#142966] rounded-none hover:bg-secondary hover:text-white">
                         Send
                         <svg xmlns="http://www.w3.org/2000/svg"
                              viewBox="0 0 24 24"

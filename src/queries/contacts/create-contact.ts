@@ -1,37 +1,40 @@
 import {gql} from '@apollo/client'
-import gqlCoreAPIClient from "@/lib/apollo-coreapi-client";
+import {gqlCoreAPIClient} from "@/lib/apollo-coreapi-client";
 import {get} from "lodash";
+import {Contact} from "@/entities/contact";
 
-export const postContact = gql`
-query GetPageBySlug($slug: String!) {
-  page(where: { slug: $slug }) {
+export const CREATE_CONTACT = gql`
+mutation CreateContact($data: ContactCreateInput!) {
+  createContact(data: $data) {
     id
-    name
-    status
-    slug
-    sections {
-      id
-      name
-      title
-      slug
-      status
-      content {
-        document(hydrateRelationships: true)
-      }
-      createdAt
-      updatedAt 
-    }
+    fullName
+    email
+    topic
+    message
+    updatedAt
     createdAt
-    updatedAt        
+    updatedBy {
+      id
+      isAdmin
+    }
+    createdBy {
+      id
+      isAdmin
+    }
   }
 }
 `
 
-export const createContact = async (payload: object): Promise<unknown> => {
-    const response = await gqlCoreAPIClient.query({
-        query: postContact,
-        variables: payload,
+export const createContact = async (payload: object): Promise<Contact> => {
+    const response = await gqlCoreAPIClient().query({
+        query: CREATE_CONTACT,
+        variables: {
+            data: {
+                ...payload,
+                topic: 'SOFTWARE_DESIGN',
+            },
+        },
     });
 
-    return get(response, 'data.page', {});
+    return get(response, 'data.createContact', {}) as Contact;
 }
