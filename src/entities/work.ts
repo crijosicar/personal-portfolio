@@ -5,6 +5,7 @@ export type Work = {
     slug: string;
     description: string;
     startDate: Date;
+    endDate?: Date;
     status: string;
     createdAt: Date;
     updatedAt: Date;
