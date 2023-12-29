@@ -1,5 +1,5 @@
 import {gql} from '@apollo/client'
-import gqlCoreAPIClient from "../../lib/apollo-coreapi-client";
+import gqlCoreAPIClient from "@/lib/apollo-coreapi-client";
 import {get} from "lodash";
 
 export const findPortfolioBySlug = gql`

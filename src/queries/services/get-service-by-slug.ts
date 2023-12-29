@@ -2,9 +2,9 @@ import {gql} from '@apollo/client'
 import {get} from "lodash";
 import {gqlCoreAPIClient} from "@/lib/apollo-coreapi-client";
 
-export const GET_SERVICE_BY_ID = gql`
-query GetServiceById($serviceId: ID!) {
-  service(where: { id: $serviceId }) {
+export const GET_SERVICE_BY_SLUG = gql`
+query GetServiceBySlug($slug: String!) {
+  service(where: { slug: $slug }) {
     id
     title
     name
@@ -19,12 +19,11 @@ query GetServiceById($serviceId: ID!) {
 }
 `
 
-export const getServiceById = async (serviceId: string) => {
+export const getServiceBySlug = async (slug: string) => {
     const response = await gqlCoreAPIClient().query({
-        query: GET_SERVICE_BY_ID,
-        variables: {
-            serviceId,
-        },
+        query: GET_SERVICE_BY_SLUG,
+        variables: {slug},
+
     });
 
     return get(response, 'data.service');

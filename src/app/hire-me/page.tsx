@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
-import HireMeForm from "./components/hire-me-form";
+import HireMeForm from "@/app/hire-me/components/hire-me-form";
 
 export const metadata = {
-    title: 'Hire me | Cristian&apos;s Software Engineers',
+    title: 'Let\'s Work | Cristian\'s Software Engineers',
 }
 
 export default async function Page() {
@@ -20,7 +20,7 @@ export default async function Page() {
                 <div className={'flex mb-4 items-center justify-center p-10 gap-5'}>
                     <div className={'w-1/4 flex items-center justify-center flex-col gap-5 my-3 justify-items-end'}>
                         <h2 className={'text-3xl mt-2.5'}>
-                            Ping me up on
+                            Hit me up at
                         </h2>
                         <div className={'flex justify-around gap-5'}>
                             <Link href={'#'} className={'mx-0.5'}>

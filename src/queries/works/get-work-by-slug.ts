@@ -1,8 +1,9 @@
 import {gql} from '@apollo/client'
-import gqlCoreAPIClient from "../../lib/apollo-coreapi-client";
+import {gqlCoreAPIClient} from "@/lib/apollo-coreapi-client";
 import {get} from "lodash";
+import {Work} from "@/entities/work";
 
-export const findWorkBySlug = gql`
+export const GET_WORK_BY_SLUG = gql`
     query GetWorkBySlug($slug: String!) {
       work(where: { slug: $slug }) {
         id
@@ -12,7 +13,7 @@ export const findWorkBySlug = gql`
           description
           startDate
           status
-          projects{
+          projects {
               id
               name
               description
@@ -37,9 +38,9 @@ export const findWorkBySlug = gql`
       }
     }`;
 
-export const getWorkBySlug = async (slug: string): Promise<any> => {
-    const {data} = await gqlCoreAPIClient.query({
-        query: findWorkBySlug,
+export const getWorkBySlug = async (slug: string): Promise<Work> => {
+    const {data} = await gqlCoreAPIClient().query({
+        query: GET_WORK_BY_SLUG,
         variables: {slug},
     });
 

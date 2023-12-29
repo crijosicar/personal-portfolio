@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const {fontFamily} = require('tailwindcss/defaultTheme');
 import keepPreset from "keep-react/preset";
 
 module.exports = {
@@ -11,6 +10,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 inter: ["var(--font-inter)"],
+                josefin_sans: ["var(--font-josefin-sans)"],
             },
             backgroundColor: (theme) => ({
                 ...theme("colors"),

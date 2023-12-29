@@ -1,5 +1,5 @@
 export const metadata = {
-    title: 'Shelf | Cristians Software Engineers',
+    title: 'Shelf | Cristian\'s Software Engineers',
 }
 
 export default async function Page() {

@@ -1,9 +1,9 @@
 import Link from "next/link";
-import HireMeForm from "../hire-me/components/hire-me-form";
+import HireMeForm from "@/app/hire-me/components/hire-me-form";
 import React from "react";
 
 export const metadata = {
-    title: 'About | Cristian&apos;s Software Engineers',
+    title: "About | Cristian's Software Engineers",
 }
 
 export default async function Page() {

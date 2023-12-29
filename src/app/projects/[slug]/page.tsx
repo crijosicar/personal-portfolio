@@ -2,7 +2,7 @@ import {get, isEmpty, map} from "lodash";
 import {Metadata} from "next";
 import {getAllPortfolios} from "@/queries/portfolios/get-all-portfolios";
 import {getPortfolioBySlug} from "@/queries/portfolios/get-portfolio-by-slug";
-import {PageBaseProps} from "../../../src/entities/page.entity";
+import {BasePageProps} from "@/entities/base-page";
 
 export const revalidate = 5;
 
@@ -14,7 +14,7 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
     }));
 }
 
-export async function generateMetadata({params}: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({params}: BasePageProps): Promise<Metadata> {
     const slug = get(params, 'slug');
 
     if (isEmpty(slug)) {
@@ -35,8 +35,7 @@ export async function generateMetadata({params}: { params: { slug: string } }): 
     };
 }
 
-
-export default async function Page({params}: PageBaseProps): Promise<JSX.Element> {
+export default async function Page({params}: BasePageProps): Promise<JSX.Element> {
     return (
         <section className={'flex justify-center h-screen'}>
             Project ID {params.slug}

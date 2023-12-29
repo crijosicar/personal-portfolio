@@ -1,8 +1,8 @@
 import {gql} from '@apollo/client'
-import gqlCoreAPIClient from "../../lib/apollo-coreapi-client";
+import {gqlCoreAPIClient} from "@/lib/apollo-coreapi-client";
 import {get} from "lodash";
 
-export const findWorkById = gql`
+export const GET_WORK_BY_ID = gql`
     query GetWorkById($workId: ID!) {
       work(where: { id: $workId }) {
         id
@@ -18,8 +18,8 @@ export const findWorkById = gql`
     }`;
 
 export const getWorkById = async (workId: string) => {
-    const {data} = await gqlCoreAPIClient.query({
-        query: findWorkById,
+    const {data} = await gqlCoreAPIClient().query({
+        query: GET_WORK_BY_ID,
         variables: {
             workId,
         },
