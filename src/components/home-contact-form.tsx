@@ -22,20 +22,24 @@ const contactValidationSchema = yup.object().shape({
 export default function HomeContactForm() {
     const refHomeContactFrom = useRef();
     const [showModal, setShowModal] = useState(false);
+    const homeContactFormProps = {
+        resolver: yupResolver(contactValidationSchema),
+        defaultValues: { fullName: '', email: '', message: '' },
+    };
+    const {
+        reset,
+        control,
+        handleSubmit,
+        formState: { errors, isLoading, isDirty, isValid },
+        setValue,
+    } = useForm<HomeContactForm>(homeContactFormProps);
 
-    const {reset, control, handleSubmit, formState: { errors }} = useForm<HomeContactForm>(
-        {
-            resolver: yupResolver(contactValidationSchema),
-            defaultValues: {
-                fullName: '',
-                email: '',
-                message: '',
-            },
-        }
-    );
+    const onSubmit: SubmitHandler<HomeContactForm> = async (data: HomeContactForm): Promise<void> => {
+        if(!isValid) return;
 
-    const onSubmit: SubmitHandler<HomeContactForm> = async (data: HomeContactForm) => {
-        const response = await fetch('/api/contacts', {
+        console.log("onSubmit", { data });
+
+        const contactResponse = await fetch('/api/contacts', {
             method: "POST",
             cache: "no-cache",
             headers: {
@@ -43,19 +47,19 @@ export default function HomeContactForm() {
             },
             body: JSON.stringify(data)
         });
-        const parsedResponse = await response.json();
 
-        console.log("onSubmit => ", { parsedResponse });
+        if(contactResponse.status !== 200) {
+            const { errors } = await contactResponse.json();
+            console.log({ errors });
+            return;
+        }
 
-        // if(response.status === 200) {
-        //     setShowModal(true);
-        //     reset();
-        // }
+        setShowModal(true);
+        reset();
     };
 
     const closeModal = () => {
         setShowModal(false);
-        console.log('closeModal');
     };
 
     return (
@@ -92,10 +96,10 @@ export default function HomeContactForm() {
                         <Controller
                             name="fullName"
                             control={control}
-                            render={({field: {onChange: onChangeFullName, onBlur, value, ref}}) => (
+                            render={({field: {onChange: onChangeFullName, onBlur, value, ref, name}}) => (
                                 <TextInput
                                     id="fullName"
-                                    name="fullName"
+                                    name={name}
                                     className={'mt-1 rounded-none'}
                                     placeholder="Your Name"
                                     color={errors?.fullName ? "error" : "secondary"}
@@ -107,7 +111,8 @@ export default function HomeContactForm() {
                                     icon={errors?.fullName ? <WarningCircle size={20} color="#FF574D"/> : null}
                                     onBlur={onBlur}
                                     handleOnChange={(e) => {
-                                        onChangeFullName(e.target.value);
+                                        // onChangeFullName(e.target.value);
+                                        setValue(name, e.target.value);
                                     }}
                                     value={value}
                                     ref={ref}
@@ -120,10 +125,10 @@ export default function HomeContactForm() {
                         <Controller
                             name="email"
                             control={control}
-                            render={({field: {onChange: onChangeEmail, onBlur, value, ref}}) => (
+                            render={({field: {onChange: onChangeEmail, onBlur, value, ref, name}}) => (
                                 <TextInput
                                     id="email"
-                                    name="email"
+                                    name={name}
                                     className={'mt-1 rounded-none'}
                                     placeholder="your.email@mail.com"
                                     color={errors?.email ? "error" : "secondary"}
@@ -135,7 +140,8 @@ export default function HomeContactForm() {
                                     icon={errors?.email ? <WarningCircle size={20} color="#FF574D"/> : null}
                                     onBlur={onBlur}
                                     handleOnChange={(e) => {
-                                        onChangeEmail(e.target.value);
+                                        // onChangeEmail(e.target.value);
+                                        setValue(name, e.target.value);
                                     }}
                                     value={value}
                                     ref={ref}
@@ -148,10 +154,10 @@ export default function HomeContactForm() {
                         <Controller
                             name="message"
                             control={control}
-                            render={({field: {onChange: onChangeMessage, onBlur, value, ref}}) => (
+                            render={({field: {onChange: onChangeMessage, onBlur, value, ref, name}}) => (
                                 <Textarea
                                     id="message"
-                                    name="message"
+                                    name={name}
                                     className={'mt-1 rounded-none'}
                                     placeholder="Leave a message..."
                                     color={errors?.message ? "error" : "info"}
@@ -161,7 +167,8 @@ export default function HomeContactForm() {
                                     helperText={errors?.message ? errors.message.message : ''}
                                     onBlur={onBlur}
                                     onChange={(e) => {
-                                        onChangeMessage(e.target.value);
+                                        // onChangeMessage(e.target.value);
+                                        setValue(name, e.target.value);
                                     }}
                                     value={value}
                                     ref={ref}
