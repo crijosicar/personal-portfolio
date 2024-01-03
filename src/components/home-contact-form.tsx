@@ -21,6 +21,8 @@ const contactValidationSchema = yup.object().shape({
 
 export default function HomeContactForm() {
     const refHomeContactFrom = useRef();
+    const fullNameRef = useRef<HTMLInputElement | null>(null);
+    const emailRef = useRef<HTMLInputElement | null>(null);
     const [showModal, setShowModal] = useState(false);
     const homeContactFormProps = {
         resolver: yupResolver(contactValidationSchema),
@@ -30,14 +32,13 @@ export default function HomeContactForm() {
         reset,
         control,
         handleSubmit,
-        formState: { errors, isLoading, isDirty, isValid },
-        setValue,
+        resetField,
+        formState: { errors, isValid },
     } = useForm<HomeContactForm>(homeContactFormProps);
 
     const onSubmit: SubmitHandler<HomeContactForm> = async (data: HomeContactForm): Promise<void> => {
+        // Guard clause to validate form
         if(!isValid) return;
-
-        console.log("onSubmit", { data });
 
         const contactResponse = await fetch('/api/contacts', {
             method: "POST",
@@ -50,17 +51,29 @@ export default function HomeContactForm() {
 
         if(contactResponse.status !== 200) {
             const { errors } = await contactResponse.json();
-            console.log({ errors });
+            console.error({ errors });
             return;
         }
 
         setShowModal(true);
-        reset();
+        resetFormFields();
     };
 
     const closeModal = () => {
         setShowModal(false);
     };
+
+    const fireSubmitEvent = () => {
+        refHomeContactFrom.current && refHomeContactFrom.current.dispatchEvent(
+            new Event("submit", { cancelable: true, bubbles: true })
+        );
+    }
+
+    const resetFormFields = () => {
+        fullNameRef.current!.value = '';
+        emailRef.current!.value = '';
+        resetField('message');
+    }
 
     return (
         <div>
@@ -111,11 +124,13 @@ export default function HomeContactForm() {
                                     icon={errors?.fullName ? <WarningCircle size={20} color="#FF574D"/> : null}
                                     onBlur={onBlur}
                                     handleOnChange={(e) => {
-                                        // onChangeFullName(e.target.value);
-                                        setValue(name, e.target.value);
+                                        onChangeFullName(e.target.value);
                                     }}
                                     value={value}
-                                    ref={ref}
+                                    ref={(e) => {
+                                        ref(e);
+                                        fullNameRef.current = e // you can still assign to ref
+                                    }}
                                 />
                             )}
                         />
@@ -140,11 +155,13 @@ export default function HomeContactForm() {
                                     icon={errors?.email ? <WarningCircle size={20} color="#FF574D"/> : null}
                                     onBlur={onBlur}
                                     handleOnChange={(e) => {
-                                        // onChangeEmail(e.target.value);
-                                        setValue(name, e.target.value);
+                                        onChangeEmail(e.target.value);
                                     }}
                                     value={value}
-                                    ref={ref}
+                                    ref={(e) => {
+                                        ref(e);
+                                        emailRef.current = e // you can still assign to ref
+                                    }}
                                 />
                             )}
                         />
@@ -167,8 +184,7 @@ export default function HomeContactForm() {
                                     helperText={errors?.message ? errors.message.message : ''}
                                     onBlur={onBlur}
                                     onChange={(e) => {
-                                        // onChangeMessage(e.target.value);
-                                        setValue(name, e.target.value);
+                                        onChangeMessage(e.target.value);
                                     }}
                                     value={value}
                                     ref={ref}
@@ -178,11 +194,7 @@ export default function HomeContactForm() {
                     </div>
                     <Button size="xl"
                             type="text"
-                            onClick={() => {
-                                refHomeContactFrom.current && refHomeContactFrom.current.dispatchEvent(
-                                    new Event("submit", { cancelable: true, bubbles: true })
-                                );
-                            }}
+                            onClick={fireSubmitEvent}
                             color="info"
                             className="border border-[#142966] rounded-none hover:bg-secondary hover:text-white">
                         Send

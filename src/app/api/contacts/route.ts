@@ -3,7 +3,7 @@ import {CORE_API_URL} from "@/lib/constant";
 import {ContactTopicType} from "@/entities/contact";
 import {get, isEmpty, join} from "lodash";
 
-export const dynamic = 'force-dynamic'; // defaults to auto
+export const dynamic = 'force-dynamic';
 
 export const runtime = 'nodejs';
 
