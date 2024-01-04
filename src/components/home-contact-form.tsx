@@ -5,7 +5,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {Button, Label, Modal, Textarea, TextInput} from "keep-react";
 import {Envelope, Hand, User, WarningCircle} from "phosphor-react";
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 type HomeContactForm = {
     fullName: string,
@@ -33,8 +33,14 @@ export default function HomeContactForm() {
         control,
         handleSubmit,
         resetField,
-        formState: { errors, isValid },
+        formState: { errors, isValid, isSubmitSuccessful },
     } = useForm<HomeContactForm>(homeContactFormProps);
+
+    useEffect(() => {
+        if(isSubmitSuccessful) {
+            resetFormFields();
+        }
+    }, [isSubmitSuccessful]);
 
     const onSubmit: SubmitHandler<HomeContactForm> = async (data: HomeContactForm): Promise<void> => {
         // Guard clause to validate form
@@ -56,14 +62,13 @@ export default function HomeContactForm() {
         }
 
         setShowModal(true);
-        resetFormFields();
     };
 
     const closeModal = () => {
         setShowModal(false);
     };
 
-    const fireSubmitEvent = () => {
+    const fireSubmitContactFormEvent = () => {
         refHomeContactFrom.current && refHomeContactFrom.current.dispatchEvent(
             new Event("submit", { cancelable: true, bubbles: true })
         );
@@ -72,7 +77,7 @@ export default function HomeContactForm() {
     const resetFormFields = () => {
         fullNameRef.current!.value = '';
         emailRef.current!.value = '';
-        resetField('message');
+        reset();
     }
 
     return (
@@ -194,7 +199,7 @@ export default function HomeContactForm() {
                     </div>
                     <Button size="xl"
                             type="text"
-                            onClick={fireSubmitEvent}
+                            onClick={fireSubmitContactFormEvent}
                             color="info"
                             className="border border-[#142966] rounded-none hover:bg-secondary hover:text-white">
                         Send
