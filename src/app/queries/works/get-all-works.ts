@@ -1,7 +1,7 @@
 import {gql} from '@apollo/client'
 import {get} from "lodash";
-import {gqlCoreAPIClient} from "@/lib/apollo-coreapi-client";
-import {Work} from "@/entities/work";
+import {gqlCoreAPIClient} from "@/app/lib/apollo-coreapi-client";
+import {Work} from "@/app/entities/work";
 
 export const GET_ALL_WORKS = gql`
 query GetAllWorks($take: Int) {

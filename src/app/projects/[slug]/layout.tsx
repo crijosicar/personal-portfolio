@@ -1,8 +1,8 @@
 'use client';
 
 import React from "react";
-import Breadcrumbs from "@/components/breadcrumbs";
-import {BaseLayoutProps} from "@/entities/base-layout";
+import Breadcrumbs from "@/app/components/breadcrumbs";
+import {BaseLayoutProps} from "@/app/entities/base-layout";
 
 export default function WorkLayout({children}: BaseLayoutProps) {
     const items =  [

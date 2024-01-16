@@ -1,4 +1,4 @@
-import {BasePageProps} from "@/entities/base-page";
+import {BasePageProps} from "@/app/entities/base-page";
 
 export const metadata = {
     title: "Services | Cristian's Software Engineers",

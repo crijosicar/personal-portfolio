@@ -1,6 +1,6 @@
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
-import {CORE_API_URL} from "@/lib/constant";
+import {CORE_API_URL} from "@/app/lib/constant";
 
 export const { getClient: gqlCoreAPIClient } = registerApolloClient(() => {
     return new ApolloClient({

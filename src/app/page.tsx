@@ -3,10 +3,10 @@ import React from "react";
 import {map, pick} from "lodash";
 import moment from "moment";
 import Image from "next/image";
-import {getAllWorks} from "@/queries/works/get-all-works";
-import HomeContactForm from "@/components/home-contact-form";
-import HomeClientsCarousel from "@/components/home-clients-carousel";
-import {Work} from "@/entities/work";
+import {getAllWorks} from "@/app/queries/works/get-all-works";
+import HomeContactForm from "@/app/components/home-contact-form";
+import HomeClientsCarousel from "@/app/components/home-clients-carousel";
+import {Work} from "@/app/entities/work";
 
 export const metadata = {
     title: "Cristian's Software Engineers",

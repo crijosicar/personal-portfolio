@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import {CORE_API_URL} from "@/lib/constant";
-import {ContactTopicType} from "@/entities/contact";
+import {CORE_API_URL} from "@/app/lib/constant";
+import {ContactTopicType} from "@/app/entities/contact";
 import {get, isEmpty, join} from "lodash";
 
 export const dynamic = 'force-dynamic';

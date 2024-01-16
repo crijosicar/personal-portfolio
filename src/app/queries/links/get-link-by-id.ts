@@ -1,6 +1,6 @@
 import {gql} from '@apollo/client'
 import {get} from "lodash";
-import gqlCoreAPIClient from "@/lib/apollo-coreapi-client";
+import gqlCoreAPIClient from "@/app/lib/apollo-coreapi-client";
 
 export const findLinkById = gql`
 query GetLinkById($linkId: ID!) {

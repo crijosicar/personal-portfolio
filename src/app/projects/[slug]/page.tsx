@@ -1,8 +1,8 @@
 import {get, isEmpty, map} from "lodash";
 import {Metadata} from "next";
-import {getAllPortfolios} from "@/queries/portfolios/get-all-portfolios";
-import {getPortfolioBySlug} from "@/queries/portfolios/get-portfolio-by-slug";
-import {BasePageProps} from "@/entities/base-page";
+import {getAllPortfolios} from "@/app/queries/portfolios/get-all-portfolios";
+import {getPortfolioBySlug} from "@/app/queries/portfolios/get-portfolio-by-slug";
+import {BasePageProps} from "@/app/entities/base-page";
 
 export const revalidate = 5;
 

@@ -1,8 +1,8 @@
 import React from "react";
-import Breadcrumbs from "@/components/breadcrumbs";
+import Breadcrumbs from "@/app/components/breadcrumbs";
 import {get, isEmpty} from "lodash";
-import {BaseLayoutPageProps} from "@/entities/base-layout";
-import {getServiceBySlug} from "@/queries/services/get-service-by-slug";
+import {BaseLayoutPageProps} from "@/app/entities/base-layout";
+import {getServiceBySlug} from "@/app/queries/services/get-service-by-slug";
 
 export default async function WorkLayout({children, params}: BaseLayoutPageProps) {
     const serviceSlug = get(params, 'slug', '') as string;

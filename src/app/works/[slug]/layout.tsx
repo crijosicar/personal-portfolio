@@ -1,31 +1,36 @@
-import React from "react";
-import Breadcrumbs from "@/components/breadcrumbs";
-import {get, isEmpty} from "lodash";
-import {getWorkBySlug} from "@/queries/works/get-work-by-slug";
-import {BaseLayoutPageProps} from "@/entities/base-layout";
+'use client';
 
-export default async function WorkLayout({children, params}: BaseLayoutPageProps) {
-    const workSlug = get(params, 'slug', '') as string;
+import React, {useContext, useEffect} from "react";
+import {BaseLayoutProps} from "@/entities/base-layout";
+import {BreadCrumbsContext} from "@/components/breadcrumbs-wrapper";
+import {useParams} from "next/navigation";
+import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
+import { gql } from "@apollo/client";
+import {Work} from "@/entities/work";
 
-    const items =  [
-        {
-            name: 'Works',
-            slug: 'works',
-            path: '/',
-        },
-    ];
+const GET_WORK_TITLE_BY_SLUG = gql`
+    query GetWorkBySlug($slug: String!) {
+        work(where: { slug: $slug }) {
+            title
+        }
+    }`;
 
-    if(!isEmpty(workSlug)) {
-        const work = await getWorkBySlug(workSlug);
+export default function WorkLayout({children}: BaseLayoutProps) {
+    const { slug } = useParams();
+    const { setContext: setCrumbContext, setItemName: setCrumbName } = useContext(BreadCrumbsContext);
+    const { data } = useSuspenseQuery<{ work: Work }>(GET_WORK_TITLE_BY_SLUG, { variables: { slug } });
 
-        items.push({ name: get(work, 'title'), slug: workSlug, path: `/works/` })
-    }
+    useEffect(() => {
+        if(data) {
+            const { work: { title } } = data;
+
+            setCrumbContext!('works');
+            setCrumbName!(title);
+        }
+    }, );
 
     return (
         <div>
-            <div className={'container px-20'}>
-                <Breadcrumbs items={items} />
-            </div>
             {children}
         </div>
     );

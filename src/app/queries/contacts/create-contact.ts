@@ -1,7 +1,7 @@
 import {gql} from '@apollo/client'
-import {gqlCoreAPIClient} from "@/lib/apollo-coreapi-client";
+import {gqlCoreAPIClient} from "@/app/lib/apollo-coreapi-client";
 import {get} from "lodash";
-import {Contact, ContactCreateInput, ContactTopicType} from "@/entities/contact";
+import {Contact, ContactCreateInput, ContactTopicType} from "@/app/entities/contact";
 
 export const CREATE_CONTACT = gql`
     mutation CreateContact($data: ContactCreateInput!) {

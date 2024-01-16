@@ -1,10 +1,13 @@
+'use client';
+
 import React from "react";
 import './globals.css';
-import NavbarHeader from "@/components/navbar-header";
+import NavbarHeader from "@/app/components/navbar-header";
 import {inter} from "@/styles/fonts";
-import {ApolloWrapper} from "@/lib/apollo-wrapper";
-import {BaseLayoutProps} from "@/entities/base-layout";
+import {ApolloWrapper} from "@/app/components/apollo-wrapper";
+import {BaseLayoutProps} from "@/app/entities/base-layout";
 import Link from "next/link";
+import {BreadCrumbsWrapper} from "@/app/components/breadcrumbs-wrapper";
 
 export default function RootLayout({children}: BaseLayoutProps) {
     const year = new Date().getFullYear();
@@ -18,10 +21,14 @@ export default function RootLayout({children}: BaseLayoutProps) {
                     <header id={'top-navbar'} className="container mx-auto py-5">
                         <NavbarHeader/>
                     </header>
-                    <main>{children}</main>
+                    <main>
+                        <BreadCrumbsWrapper>
+                            {children}
+                        </BreadCrumbsWrapper>
+                    </main>
                     <footer id={'bottom-bar'} className="container mx-auto px-10 py-5">
                         <div className={'flex justify-evenly'}>
-                            <div className={'flex-1 flex flex-col gap-1'}>
+                        <div className={'flex-1 flex flex-col gap-1'}>
                                 <Link href={'mailto:hello@cristiansierra.dev?subject=Let\'s%20talk%20about%20my%20project'}
                                       className={'flex-1 mx-0.5 text-fourth'}>
                                     hello@cristiansierra.dev

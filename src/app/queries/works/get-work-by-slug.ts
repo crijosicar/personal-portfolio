@@ -1,7 +1,7 @@
 import {gql} from '@apollo/client'
-import {gqlCoreAPIClient} from "@/lib/apollo-coreapi-client";
+import {gqlCoreAPIClient} from "@/app/lib/apollo-coreapi-client";
 import {get} from "lodash";
-import {Work} from "@/entities/work";
+import {Work} from "@/app/entities/work";
 
 export const GET_WORK_BY_SLUG = gql`
     query GetWorkBySlug($slug: String!) {

@@ -1,5 +1,5 @@
 import {get, pick} from "lodash";
-import {getAllWorks} from "@/queries/works/get-all-works";
+import {getAllWorks} from "@/app/queries/works/get-all-works";
 import Link from "next/link";
 import React from "react";
 import moment from "moment/moment";

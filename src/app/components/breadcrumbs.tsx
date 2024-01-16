@@ -3,7 +3,7 @@
 import {Breadcrumb} from "keep-react";
 import {CaretRight, House} from "phosphor-react";
 import {map, size} from "lodash";
-import {BreadcrumbItem, BreadcrumbItems} from "@/entities/breadcrumbs";
+import {BreadcrumbItem, BreadcrumbItems} from "@/app/entities/breadcrumbs";
 
 export default function Breadcrumbs({ items }: { items: BreadcrumbItems }) {
     const itemsSize = size(items);

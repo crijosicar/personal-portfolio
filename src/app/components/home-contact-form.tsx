@@ -90,7 +90,7 @@ export default function HomeContactForm() {
                 <Modal.Body>
                     <div className="space-y-6">
                         <p className="text-body-4 leading-relaxed text-metal-500">
-                            Thanks for contacting me, I'll get back to you in a few.
+                            {"Thanks for contacting me, I'll get back to you in a few."}
                         </p>
                     </div>
                 </Modal.Body>
