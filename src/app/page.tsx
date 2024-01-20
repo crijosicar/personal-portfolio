@@ -25,7 +25,7 @@ export default async function Page() {
     return (
         <div className={'w-full h-full'}>
             {/*HERO SECTION*/}
-            <section id={'hero'} className={'w-full'}>
+            <section id={'hero'} className={'container mx-auto px-4'}>
                 <div className={'px-20 md:px-10 flex flex-col md:flex-row gap-1 items-center justify-center'}>
                     <div className={'md:basis-2/3 flex flex-col'}>
                         <div>
@@ -81,19 +81,19 @@ export default async function Page() {
                 </div>
             </section>
             {/*WHAT DO I DO SECTION*/}
-            <section id={'what-do-i-do'} className={'w-full'}>
-                <div className={'p-10'}>
+            <section id={'what-do-i-do'} className={'container mx-auto px-4'}>
+                <div className={'container mx-auto px-5 py-10'}>
                     <div className={'container mx-auto px-5 py-5'}>
                         <h1 className={'text-5xl font-semibold text-primary'}>
                             How can I help?
                         </h1>
                         <p className={'mt-2 text-2xl'}>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur laoreet eleifend euismod."}</p>
                     </div>
-                    <div className={'flex items-center justify-center p-10 w-full'}>
+                    <div className={'flex items-center justify-center p-5 w-full'}>
                         <div className={'flex flex-col md:flex-row gap-5'}>
                             <Link className={`flex-1 bg-tertiary text-white max-w-md hover:animate-pulse`}
                                   href={`/services/web-development`}>
-                                <div className={'relative h-10 w-full'}>
+                                <div className={'relative h-5 container'}>
                                     <div className={'absolute top-2.5 right-2.5'}>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                              viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
@@ -125,7 +125,7 @@ export default async function Page() {
                             </Link>
                             <Link className={`flex-1 bg-secondary text-white max-w-md hover:animate-pulse`}
                                   href={`/services/fullstack-development`}>
-                                <div className={'relative h-10 w-full'}>
+                                <div className={'relative h-5 container'}>
                                     <div className={'absolute top-2.5 right-2.5'}>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                              viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
@@ -157,7 +157,7 @@ export default async function Page() {
                             </Link>
                             <Link className={`flex-1 bg-primary text-white max-w-md hover:animate-pulse`}
                                   href={`/services/software-engineering`}>
-                                <div className={'relative h-10 w-full'}>
+                                <div className={'relative h-5 container'}>
                                     <div className={'absolute top-2.5 right-2.5'}>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                              viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
@@ -192,7 +192,7 @@ export default async function Page() {
                 </div>
             </section>
             {/*WORKS SECTION*/}
-            <section id={'works'} className={'w-full'}>
+            <section id={'works'} className={'container mx-auto px-4'}>
                 <div className={'p-10'}>
                     <div className={'container mx-auto px-5 py-5'}>
                         <h1 className={'text-5xl font-semibold text-primary'}>
@@ -263,10 +263,10 @@ export default async function Page() {
                 </div>
             </section>
             {/*HAVE A PROJECT SECTION*/}
-            <section id={'have-a-project'} className={'w-full'}>
+            <section id={'have-a-project'} className={'container mx-auto px-4'}>
                 <div className={'px-20 py-10 md:px-10 flex flex-col md:flex-row gap-1 items-center justify-center'}>
                     <div className={'md:flex-1 container'}>
-                        <div className={'md:pl-10'}>
+                        <div className={'md:pl-5'}>
                             <div className={'flex items-center gap-1'}>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                      strokeWidth={1.5}

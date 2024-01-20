@@ -19,7 +19,7 @@ export default function RootLayout({children}: BaseLayoutProps) {
                         <NavbarHeader/>
                     </header>
                     <main>{children}</main>
-                    <footer id={'bottom-bar'} className="container mx-auto px-10 py-5">
+                    <footer id={'bottom-bar'} className={'container mx-auto px-10 py-5'}>
                         <div className={'flex justify-evenly'}>
                             <div className={'flex-1 flex flex-col gap-1'}>
                                 <Link href={'mailto:hello@cristiansierra.dev?subject=Let\'s%20talk%20about%20my%20project'}
