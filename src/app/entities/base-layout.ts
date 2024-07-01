@@ -1,5 +1,5 @@
-import React from "react";
-import {BasePageProps} from "@/app/entities/base-page";
+import { BasePageProps } from '@/app/entities/base-page';
+import React from 'react';
 
 export type BaseLayoutProps = {
     children: React.ReactNode;

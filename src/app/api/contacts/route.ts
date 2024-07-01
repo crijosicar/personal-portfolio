@@ -1,7 +1,7 @@
+import { ContactTopicType } from '@/app/entities/contact';
+import { CORE_API_URL } from '@/app/lib/constant';
+import { get, isEmpty, join } from 'lodash';
 import { NextRequest, NextResponse } from 'next/server';
-import {CORE_API_URL} from "@/app/lib/constant";
-import {ContactTopicType} from "@/app/entities/contact";
-import {get, isEmpty, join} from "lodash";
 
 export const dynamic = 'force-dynamic';
 
@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     const headers = {
         'Accept-Encoding': 'gzip, deflate, br',
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
+        Accept: 'application/json',
     };
 
     const payload = {
@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
         message: body.message,
     };
 
-    const query =  JSON.stringify({
+    const query = JSON.stringify({
         query: `
             mutation CreateContact($data: ContactCreateInput!) {
                 createContact(data: $data) {
@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
         `,
         variables: {
             data: payload,
-        }
+        },
     });
 
     const response = await fetch(`${CORE_API_URL}/api/graphql`, {
@@ -58,7 +58,9 @@ export async function POST(request: NextRequest) {
     const responseData = await response.json();
 
     const errors = get(responseData, 'errors');
-    const responseMessage = !isEmpty(errors) ? join(errors, ',') : 'Thank you for your message. We will get back to you soon.';
+    const responseMessage = !isEmpty(errors)
+        ? join(errors, ',')
+        : 'Thank you for your message. We will get back to you soon.';
 
     return NextResponse.json({ message: responseMessage }, { status: response.status });
 }

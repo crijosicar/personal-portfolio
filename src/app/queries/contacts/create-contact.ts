@@ -1,7 +1,8 @@
-import {gql} from '@apollo/client'
-import {gqlCoreAPIClient} from "@/app/lib/apollo-coreapi-client";
-import {get} from "lodash";
-import {Contact, ContactCreateInput, ContactTopicType} from "@/app/entities/contact";
+import { Contact, ContactCreateInput, ContactTopicType } from '@/app/entities/contact';
+import { gql } from '@apollo/client';
+import { get } from 'lodash';
+
+import { gqlCoreAPIClient } from '@/app/lib/apollo-coreapi-client';
 
 export const CREATE_CONTACT = gql`
     mutation CreateContact($data: ContactCreateInput!) {
@@ -37,4 +38,4 @@ export const createContact = async (payload: ContactCreateInput): Promise<Contac
     });
 
     return get(response, 'data.createContact', {}) as Contact;
-}
+};

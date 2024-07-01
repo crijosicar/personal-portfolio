@@ -1,4 +1,4 @@
-import {Inter, Josefin_Sans} from "next/font/google";
+import { Inter, Josefin_Sans } from 'next/font/google';
 
 const inter = Inter({
     preload: true,
@@ -14,4 +14,4 @@ const josefinSans = Josefin_Sans({
     variable: '--font-josefin_sans',
 });
 
-export { inter, josefinSans }
+export { inter, josefinSans };

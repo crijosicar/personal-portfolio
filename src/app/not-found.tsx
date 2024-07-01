@@ -1,7 +1,7 @@
 'use client';
 
-import Image from 'next/image'
-import {Empty} from "keep-react";
+import { Empty } from 'keep-react';
+import Image from 'next/image';
 
 export default function NotFound() {
     return (
@@ -19,7 +19,7 @@ export default function NotFound() {
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry.
             </Empty.Description>
-            <Empty.Redirect buttonText="Go to Home" redirectUrl="/"/>
+            <Empty.Redirect buttonText="Go to Home" redirectUrl="/" />
         </Empty>
-    )
+    );
 }

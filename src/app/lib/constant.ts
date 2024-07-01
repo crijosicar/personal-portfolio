@@ -1,13 +1,13 @@
 export enum ContentStatus {
-    DRAFT = "DRAFT",
-    PUBLISHED = "PUBLISHED",
+    DRAFT = 'DRAFT',
+    PUBLISHED = 'PUBLISHED',
 }
 
 export enum ContentType {
-    LINK = "Link",
-    SERVICE = "Service",
-    WORK = "Work",
-    IMAGE = "Image",
+    LINK = 'Link',
+    SERVICE = 'Service',
+    WORK = 'Work',
+    IMAGE = 'Image',
 }
 
 export const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
