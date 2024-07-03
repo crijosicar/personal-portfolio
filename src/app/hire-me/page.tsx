@@ -12,19 +12,19 @@ export default async function Page() {
         <section className={'flex justify-center'}>
             <div className={'container p-10'}>
                 <h1 className={'text-5xl font-semibold text-primary'}>Let&apos;s Work Together</h1>
-                <h2 className={'text-3xl text-secondary mt-2.5'}>
+                <h2 className={'mt-2.5 text-3xl text-secondary'}>
                     Contact me today to discuss your project and see how I can help bring your business to the next
                     level.
                 </h2>
-                <div className={'flex mb-4 items-center justify-center p-10 gap-5'}>
-                    <div className={'w-1/4 flex items-center justify-center flex-col gap-5 my-3 justify-items-end'}>
-                        <h2 className={'text-3xl mt-2.5'}>Hit me up at</h2>
+                <div className={'mb-4 flex items-center justify-center gap-5 p-10'}>
+                    <div className={'my-3 flex w-1/4 flex-col items-center justify-center justify-items-end gap-5'}>
+                        <h2 className={'mt-2.5 text-3xl'}>Hit me up at</h2>
                         <div className={'flex justify-around gap-5'}>
                             <Link href={'#'} className={'mx-0.5'}>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 448 512"
-                                    className="w-7 h-7 font-semibold text-primary dark:text-white hover:text-secondary"
+                                    className="h-7 w-7 font-semibold text-primary hover:text-secondary dark:text-white"
                                 >
                                     <path
                                         fill="currentColor"
@@ -36,7 +36,7 @@ export default async function Page() {
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 496 512"
-                                    className="w-7 h-7 font-semibold text-primary dark:text-white hover:text-secondary"
+                                    className="h-7 w-7 font-semibold text-primary hover:text-secondary dark:text-white"
                                 >
                                     <path
                                         fill="currentColor"
@@ -48,7 +48,7 @@ export default async function Page() {
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 448 512"
-                                    className="w-7 h-7 font-semibold text-primary dark:text-white hover:text-secondary"
+                                    className="h-7 w-7 font-semibold text-primary hover:text-secondary dark:text-white"
                                 >
                                     <path
                                         fill="currentColor"
@@ -58,10 +58,10 @@ export default async function Page() {
                             </Link>
                         </div>
                     </div>
-                    <div className={'flex-grow flex items-center justify-center'}>
-                        <h1 className={'text-2xl font-bold mt-2.5'}>OR</h1>
+                    <div className={'flex flex-grow items-center justify-center'}>
+                        <h1 className={'mt-2.5 text-2xl font-bold'}>OR</h1>
                     </div>
-                    <div className={'w-2/4 flex flex-col'}>
+                    <div className={'flex w-2/4 flex-col'}>
                         <HireMeForm />
                     </div>
                 </div>

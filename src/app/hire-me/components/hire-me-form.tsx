@@ -40,43 +40,43 @@ export default function HireMeForm() {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className={'my-4'}>
-                <label htmlFor={'fullName'} className={'text-primary text-lg'}>
+                <label htmlFor={'fullName'} className={'text-lg text-primary'}>
                     Full name
                 </label>
                 <div
-                    className={`border-b-2 border-t-0 border-l-0 border-r-0 border-grey-dark ${errors.fullName?.message ? 'border-rose-600' : ''}`}
+                    className={`border-grey-dark border-b-2 border-l-0 border-r-0 border-t-0 ${errors.fullName?.message ? 'border-rose-600' : ''}`}
                 >
                     <input
                         {...register('fullName')}
                         type={'text'}
-                        className={'border-none w-full bg-transparent outline-none'}
+                        className={'w-full border-none bg-transparent outline-none'}
                     />
                 </div>
                 <p className={'normal-case text-red-700'}>{capitalizeFirstLetter(errors.fullName?.message)}</p>
             </div>
             <div className={'my-4'}>
-                <label htmlFor={'email'} className={'text-primary text-lg'}>
+                <label htmlFor={'email'} className={'text-lg text-primary'}>
                     Your email
                 </label>
                 <div
-                    className={`border-b-2 border-t-0 border-l-0 border-r-0 border-grey-dark ${errors.email?.message ? 'border-rose-600' : ''}`}
+                    className={`border-grey-dark border-b-2 border-l-0 border-r-0 border-t-0 ${errors.email?.message ? 'border-rose-600' : ''}`}
                 >
                     <input
                         {...register('email')}
                         type={'text'}
-                        className={'border-none w-full bg-transparent outline-none'}
+                        className={'w-full border-none bg-transparent outline-none'}
                     />
                 </div>
                 <p className={'normal-case text-red-700'}>{capitalizeFirstLetter(errors.email?.message)}</p>
             </div>
             <div className={'my-4'}>
-                <label htmlFor={'topic'} className={'text-primary text-lg'}>
+                <label htmlFor={'topic'} className={'text-lg text-primary'}>
                     I need help with
                 </label>
                 <div
-                    className={`border-b-2 border-t-0 border-l-0 border-r-0 border-grey-dark ${errors.topic?.message ? 'border-rose-600' : ''}`}
+                    className={`border-grey-dark border-b-2 border-l-0 border-r-0 border-t-0 ${errors.topic?.message ? 'border-rose-600' : ''}`}
                 >
-                    <select {...register('topic')} className={'border-none w-full bg-transparent outline-none'}>
+                    <select {...register('topic')} className={'w-full border-none bg-transparent outline-none'}>
                         <option>Options...</option>
                         <option value={'software-design'}>Software Design</option>
                         <option value={'applications-development'}>Applications Development</option>
@@ -86,30 +86,30 @@ export default function HireMeForm() {
                 <p className={'normal-case text-red-700'}>{capitalizeFirstLetter(errors.topic?.message)}</p>
             </div>
             <div className={'my-4'}>
-                <label htmlFor={'message'} className={'text-primary text-lg'}>
+                <label htmlFor={'message'} className={'text-lg text-primary'}>
                     Message
                 </label>
                 <div
-                    className={`border-b-2 border-t-0 border-l-0 border-r-0 border-grey-dark ${errors.message?.message ? 'border-rose-600' : ''}`}
+                    className={`border-grey-dark border-b-2 border-l-0 border-r-0 border-t-0 ${errors.message?.message ? 'border-rose-600' : ''}`}
                 >
                     <textarea
                         {...register('message')}
                         rows={4}
                         cols={50}
-                        className={'border-none w-full bg-transparent outline-none'}
+                        className={'w-full border-none bg-transparent outline-none'}
                     ></textarea>
                 </div>
                 <p className={'normal-case text-red-700'}>{capitalizeFirstLetter(errors.message?.message)}</p>
             </div>
-            <button type="submit" className={'text-primary dark:text-white hover:text-secondary my-2'}>
+            <button type="submit" className={'my-2 text-primary hover:text-secondary dark:text-white'}>
                 <div className="flex items-center justify-center gap-1">
-                    <h1 className={'text-2xl text-bold'}>Send</h1>
+                    <h1 className={'text-bold text-2xl'}>Send</h1>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         strokeWidth="1.5"
                         stroke="currentColor"
-                        className="w-8 h-8"
+                        className="h-8 w-8"
                     >
                         <path
                             strokeLinecap={'round'}

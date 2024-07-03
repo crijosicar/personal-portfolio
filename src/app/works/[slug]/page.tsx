@@ -49,15 +49,15 @@ export default async function Page({ params }: BasePageProps) {
         <section className={'flex justify-center'}>
             <div className={'container p-10'}>
                 <div className={'flex flex-col md:flex-row'}>
-                    <h1 className="text-3xl text-primary font-bold">{`${get(work, 'title')} @`}</h1>
+                    <h1 className="text-3xl font-bold text-primary">{`${get(work, 'title')} @`}</h1>
                     <h1 className="ml-1 text-3xl text-tertiary">{get(work, 'company')}</h1>
                 </div>
                 <p className="text-gray-600">{get(work, 'description', 'TBD')}</p>
                 <p className="text-gray-600">{get(work, 'location')}</p>
                 <p className="text-gray-600">{`${get(work, 'startDate')} - ${get(work, 'endDate', 'Current')}`}</p>
-                <h2 className={'text-2xl text-tertiary font-bold'}>Projects</h2>
+                <h2 className={'text-2xl font-bold text-tertiary'}>Projects</h2>
                 <div className={'flex py-10'}>
-                    <div className={'flex flex-col md:flex-row gap-10'}>
+                    <div className={'flex flex-col gap-10 md:flex-row'}>
                         {/*{map(get(work, 'projects'), (projectData, index) => {*/}
                         {/*    const {name: title, slug, description} = pick(projectData, ['slug', 'name', 'description']);*/}
 

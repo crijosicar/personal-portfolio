@@ -11,11 +11,11 @@ export default function NavbarHeader() {
             <Navbar.Container className="flex items-center justify-between">
                 <Navbar.Brand>
                     <Image
+                        priority={false}
                         src="/images/logo.svg"
                         alt="Cristian Sierra | Software Engineer"
                         width="200"
                         height="80"
-                        style={josefinSans.style}
                     />
                 </Navbar.Brand>
                 <Navbar.Container tag="ul" className="hidden items-center justify-between gap-8 lg:flex">

@@ -23,14 +23,15 @@ const contactValidationSchema = yup
     .required();
 
 export default function HomeContactForm() {
-    const refHomeContactFrom = useRef();
     const fullNameRef = useRef<HTMLInputElement | null>(null);
     const emailRef = useRef<HTMLInputElement | null>(null);
     const [showModal, setShowModal] = useState(false);
+
     const homeContactFormProps = {
         resolver: yupResolver(contactValidationSchema),
         defaultValues: { fullName: '', email: '', message: '' },
     };
+
     const {
         reset,
         control,
@@ -68,11 +69,6 @@ export default function HomeContactForm() {
 
     const closeModal = () => {
         setShowModal(false);
-    };
-
-    const fireSubmitContactFormEvent = () => {
-        refHomeContactFrom.current &&
-            refHomeContactFrom.current.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
     };
 
     const resetFormFields = () => {
@@ -115,7 +111,7 @@ export default function HomeContactForm() {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <form onSubmit={handleSubmit(onSubmit)} ref={refHomeContactFrom}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="space-y-5">
                     <div className="sm:col-span-4">
                         <Label htmlFor="#fullName" value="Name" className={'text-2xl text-tertiary'} />
@@ -124,7 +120,6 @@ export default function HomeContactForm() {
                             control={control}
                             render={({ field: { onChange: onChangeFullName, onBlur, value, ref, name } }) => (
                                 <TextInput
-                                    id="fullName"
                                     name={name}
                                     className={'mt-1 rounded-none'}
                                     placeholder="Your Name"
@@ -155,7 +150,6 @@ export default function HomeContactForm() {
                             control={control}
                             render={({ field: { onChange: onChangeEmail, onBlur, value, ref, name } }) => (
                                 <TextInput
-                                    id="email"
                                     name={name}
                                     className={'mt-1 rounded-none'}
                                     placeholder="your.email@mail.com"
@@ -186,7 +180,6 @@ export default function HomeContactForm() {
                             control={control}
                             render={({ field: { onChange: onChangeMessage, onBlur, value, ref, name } }) => (
                                 <Textarea
-                                    id="message"
                                     name={name}
                                     className={'mt-1 rounded-none'}
                                     placeholder="Leave a message..."
@@ -207,8 +200,7 @@ export default function HomeContactForm() {
                     </div>
                     <Button
                         size="xl"
-                        type="text"
-                        onClick={fireSubmitContactFormEvent}
+                        type="submit"
                         color="info"
                         className="rounded-none border border-[#142966] hover:bg-secondary hover:text-white"
                     >

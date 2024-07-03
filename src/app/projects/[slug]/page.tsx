@@ -36,5 +36,5 @@ export async function generateMetadata({ params }: BasePageProps): Promise<Metad
 }
 
 export default async function Page({ params }: BasePageProps): Promise<JSX.Element> {
-    return <section className={'flex justify-center h-screen'}>Project ID {params.slug}</section>;
+    return <section className={'flex h-screen justify-center'}>Project ID {params.slug}</section>;
 }

@@ -18,7 +18,7 @@ export default function RootLayout({ children }: BaseLayoutProps) {
             <head />
             <body className={'min-h-screen'}>
                 <ApolloWrapper>
-                    <div className="flex flex-col h-screen">
+                    <div className="flex h-screen flex-col">
                         <header id={'top-navbar'} className="container mx-auto py-5">
                             <NavbarHeader />
                         </header>
@@ -27,12 +27,12 @@ export default function RootLayout({ children }: BaseLayoutProps) {
                         </main>
                         <footer id={'bottom-bar'} className="container mx-auto px-10 py-5">
                             <div className={'flex justify-evenly'}>
-                                <div className={'flex-1 flex flex-col gap-1'}>
+                                <div className={'flex flex-1 flex-col gap-1'}>
                                     <Link
                                         href={
                                             "mailto:hello@cristiansierra.dev?subject=Let's%20talk%20about%20my%20project"
                                         }
-                                        className={'flex-1 mx-0.5 text-fourth'}
+                                        className={'mx-0.5 flex-1 text-fourth'}
                                     >
                                         hello@cristiansierra.dev
                                     </Link>
@@ -40,12 +40,12 @@ export default function RootLayout({ children }: BaseLayoutProps) {
                                     <Link href={'tel:+15482551056'} className={'text-fourth'}>
                                         +1-548-255-1056
                                     </Link>
-                                    <div className={'flex gap-5 my-3'}>
+                                    <div className={'my-3 flex gap-5'}>
                                         <Link href={'#'} className={'mx-0.5 text-fourth'}>
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 448 512"
-                                                className="w-7 h-7 font-semibold text-tertiary hover:text-secondary"
+                                                className="h-7 w-7 font-semibold text-tertiary hover:text-secondary"
                                             >
                                                 <path
                                                     fill="currentColor"
@@ -57,7 +57,7 @@ export default function RootLayout({ children }: BaseLayoutProps) {
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 496 512"
-                                                className="w-7 h-7 font-semibold text-tertiary hover:text-secondary"
+                                                className="h-7 w-7 font-semibold text-tertiary hover:text-secondary"
                                             >
                                                 <path
                                                     fill="currentColor"
@@ -69,7 +69,7 @@ export default function RootLayout({ children }: BaseLayoutProps) {
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 448 512"
-                                                className="w-7 h-7 font-semibold text-tertiary hover:text-secondary"
+                                                className="h-7 w-7 font-semibold text-tertiary hover:text-secondary"
                                             >
                                                 <path
                                                     fill="currentColor"
@@ -79,7 +79,7 @@ export default function RootLayout({ children }: BaseLayoutProps) {
                                         </Link>
                                     </div>
                                 </div>
-                                <div className={'flex-1 flex flex-col gap-5'}>
+                                <div className={'flex flex-1 flex-col gap-5'}>
                                     <h1 className={'text-2xl font-bold text-primary'}>
                                         Work Smarter, <br />
                                         Peace.

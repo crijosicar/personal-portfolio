@@ -15,7 +15,7 @@ export default async function Page() {
 
     return (
         <section className={'flex justify-center'}>
-            <div className={' p-10 container'}>
+            <div className={'container p-10'}>
                 <h1 className="text-3xl font-bold">Works</h1>
                 <ul>
                     {works.map((work: any) => {
@@ -43,7 +43,7 @@ export default async function Page() {
                                             viewBox="0 0 24 24"
                                             strokeWidth={1.5}
                                             stroke="currentColor"
-                                            className="w-8 h-8"
+                                            className="h-8 w-8"
                                         >
                                             <path
                                                 strokeLinecap="round"

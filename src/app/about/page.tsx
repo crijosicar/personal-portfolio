@@ -9,7 +9,7 @@ export const metadata = {
 
 export default async function Page() {
     return (
-        <section id={'about'} className={'flex justify-center h-screen bg-fourth'}>
+        <section id={'about'} className={'flex h-screen justify-center bg-fourth'}>
             <div className={'container p-10'}>
                 <h1 className={'text-5xl font-semibold text-primary'}>Let&apos;s work together</h1>
                 <h2 className={'text-2xl text-white'}>
@@ -17,12 +17,12 @@ export default async function Page() {
                     level.
                 </h2>
                 <div className={'flex flex-col items-center justify-center p-10'}>
-                    <div className={'flex gap-5 my-3'}>
+                    <div className={'my-3 flex gap-5'}>
                         <Link href={'#'} className={'mx-0.5'}>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 448 512"
-                                className="w-7 h-7 font-semibold text-white dark:text-white hover:text-primary"
+                                className="h-7 w-7 font-semibold text-white hover:text-primary dark:text-white"
                             >
                                 <path
                                     fill="currentColor"
@@ -34,7 +34,7 @@ export default async function Page() {
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 496 512"
-                                className="w-7 h-7 font-semibold text-white dark:text-white hover:text-primary"
+                                className="h-7 w-7 font-semibold text-white hover:text-primary dark:text-white"
                             >
                                 <path
                                     fill="currentColor"
@@ -46,7 +46,7 @@ export default async function Page() {
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 448 512"
-                                className="w-7 h-7 font-semibold text-white dark:text-white hover:text-primary"
+                                className="h-7 w-7 font-semibold text-white hover:text-primary dark:text-white"
                             >
                                 <path
                                     fill="currentColor"
@@ -55,8 +55,8 @@ export default async function Page() {
                             </svg>
                         </Link>
                     </div>
-                    <h1 className={'text-primary text-2xl font-bold mt-2.5'}>OR</h1>
-                    <div className={'flex flex-col md:flex-row gap-10'}>
+                    <h1 className={'mt-2.5 text-2xl font-bold text-primary'}>OR</h1>
+                    <div className={'flex flex-col gap-10 md:flex-row'}>
                         <HireMeForm />
                     </div>
                 </div>
