@@ -1,8 +1,8 @@
-import {get, isEmpty, map} from "lodash";
-import {Metadata} from "next";
-import {getAllPortfolios} from "@/queries/portfolios/get-all-portfolios";
-import {getPortfolioBySlug} from "@/queries/portfolios/get-portfolio-by-slug";
-import {BasePageProps} from "@/entities/base-page";
+import { BasePageProps } from '@/app/entities/base-page';
+import { getAllPortfolios } from '@/app/queries/portfolios/get-all-portfolios';
+import { getPortfolioBySlug } from '@/app/queries/portfolios/get-portfolio-by-slug';
+import { get, isEmpty, map } from 'lodash';
+import { Metadata } from 'next';
 
 export const revalidate = 5;
 
@@ -14,7 +14,7 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
     }));
 }
 
-export async function generateMetadata({params}: BasePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: BasePageProps): Promise<Metadata> {
     const slug = get(params, 'slug');
 
     if (isEmpty(slug)) {
@@ -35,10 +35,6 @@ export async function generateMetadata({params}: BasePageProps): Promise<Metadat
     };
 }
 
-export default async function Page({params}: BasePageProps): Promise<JSX.Element> {
-    return (
-        <section className={'flex justify-center h-screen'}>
-            Project ID {params.slug}
-        </section>
-    );
+export default async function Page({ params }: BasePageProps): Promise<JSX.Element> {
+    return <section className={'flex justify-center h-screen'}>Project ID {params.slug}</section>;
 }

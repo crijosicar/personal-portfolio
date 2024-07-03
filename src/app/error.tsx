@@ -1,12 +1,12 @@
 'use client';
 
-import {Empty} from "keep-react";
-import Image from "next/image";
-import React from "react";
+import { Empty } from 'keep-react';
+import Image from 'next/image';
+import React from 'react';
 
 type ErrorPageProps = {
     reset: () => void;
-}
+};
 
 export default function Error({ reset }: ErrorPageProps) {
     return (
@@ -21,7 +21,8 @@ export default function Error({ reset }: ErrorPageProps) {
             </Empty.Image>
             <Empty.Title>Oops! You seem to be lost</Empty.Title>
             <Empty.Description>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry.
             </Empty.Description>
             <Empty.Redirect buttonText="Go to Home" redirectUrl="/" />
         </Empty>

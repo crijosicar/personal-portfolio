@@ -1,19 +1,18 @@
-import {Metadata} from 'next';
-import {get, isEmpty, map, pick} from "lodash";
-import {notFound} from "next/navigation";
-import React from "react";
+import { BasePageProps } from '@/app/entities/base-page';
+import { FRONTEND_URL } from '@/app/lib/constant';
+import { getAllWorks } from '@/app/queries/works/get-all-works';
+import { getWorkBySlug } from '@/app/queries/works/get-work-by-slug';
+import { get, isEmpty, map, pick } from 'lodash';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import React from 'react';
 
-import {getWorkBySlug} from "@/queries/works/get-work-by-slug";
-import {getAllWorks} from "@/queries/works/get-all-works";
-import {BasePageProps} from "@/entities/base-page";
-import {FRONTEND_URL} from "@/lib/constant";
-
-export const revalidate = 5;
+export const revalidate = 1;
 
 export async function generateStaticParams() {
     const works = await getAllWorks();
 
-    return map(works, (work: unknown) => (pick(work, ['slug'])));
+    return map(works, (work: unknown) => pick(work, ['slug']));
 }
 
 export async function generateMetadata({ params }: BasePageProps): Promise<Metadata> {
@@ -39,7 +38,7 @@ export async function generateMetadata({ params }: BasePageProps): Promise<Metad
 }
 
 export default async function Page({ params }: BasePageProps) {
-    const {slug} = params;
+    const { slug } = params;
     const work = await getWorkBySlug(slug);
 
     if (isEmpty(work)) {

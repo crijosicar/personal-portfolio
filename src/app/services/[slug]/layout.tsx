@@ -1,13 +1,14 @@
-import React from "react";
-import Breadcrumbs from "@/components/breadcrumbs";
-import {get, isEmpty} from "lodash";
-import {BaseLayoutPageProps} from "@/entities/base-layout";
-import {getServiceBySlug} from "@/queries/services/get-service-by-slug";
+import { BaseLayoutPageProps } from '@/app/entities/base-layout';
+import { getServiceBySlug } from '@/app/queries/services/get-service-by-slug';
+import { get, isEmpty } from 'lodash';
+import React from 'react';
 
-export default async function WorkLayout({children, params}: BaseLayoutPageProps) {
+import Breadcrumbs from '@/app/components/breadcrumbs';
+
+export default async function WorkLayout({ children, params }: BaseLayoutPageProps) {
     const serviceSlug = get(params, 'slug', '') as string;
 
-    const items =  [
+    const items = [
         {
             name: 'Services',
             slug: 'services',
@@ -15,16 +16,16 @@ export default async function WorkLayout({children, params}: BaseLayoutPageProps
         },
     ];
 
-    if(!isEmpty(serviceSlug)) {
+    if (!isEmpty(serviceSlug)) {
         const service = await getServiceBySlug(serviceSlug);
 
-        items.push({ name: get(service, 'title'), slug: serviceSlug, path: `/services/` })
+        items.push({ name: get(service, 'title'), slug: serviceSlug, path: `/services/` });
     }
 
     return (
         <div>
             <div className={'container px-20'}>
-                <Breadcrumbs items={items}/>
+                <Breadcrumbs items={items} />
             </div>
             {children}
         </div>

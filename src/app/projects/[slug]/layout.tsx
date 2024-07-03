@@ -1,11 +1,12 @@
 'use client';
 
-import React from "react";
-import Breadcrumbs from "@/components/breadcrumbs";
-import {BaseLayoutProps} from "@/entities/base-layout";
+import { BaseLayoutProps } from '@/app/entities/base-layout';
+import React from 'react';
 
-export default function WorkLayout({children}: BaseLayoutProps) {
-    const items =  [
+import Breadcrumbs from '@/app/components/breadcrumbs';
+
+export default function WorkLayout({ children }: BaseLayoutProps) {
+    const items = [
         {
             name: 'Projects',
             slug: 'projects',

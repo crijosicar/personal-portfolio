@@ -1,32 +1,37 @@
-import React from "react";
-import Breadcrumbs from "@/components/breadcrumbs";
-import {get, isEmpty} from "lodash";
-import {getWorkBySlug} from "@/queries/works/get-work-by-slug";
-import {BaseLayoutPageProps} from "@/entities/base-layout";
+'use client';
 
-export default async function WorkLayout({children, params}: BaseLayoutPageProps) {
-    const workSlug = get(params, 'slug', '') as string;
+import { BaseLayoutProps } from '@/entities/base-layout';
+import { Work } from '@/entities/work';
+import { gql } from '@apollo/client';
+import { useSuspenseQuery } from '@apollo/experimental-nextjs-app-support/ssr';
+import { useParams } from 'next/navigation';
+import React, { useContext, useEffect } from 'react';
 
-    const items =  [
-        {
-            name: 'Works',
-            slug: 'works',
-            path: '/',
-        },
-    ];
+import { BreadCrumbsContext } from '@/components/breadcrumbs-wrapper';
 
-    if(!isEmpty(workSlug)) {
-        const work = await getWorkBySlug(workSlug);
-
-        items.push({ name: get(work, 'title'), slug: workSlug, path: `/works/` })
+const GET_WORK_TITLE_BY_SLUG = gql`
+    query GetWorkBySlug($slug: String!) {
+        work(where: { slug: $slug }) {
+            title
+        }
     }
+`;
 
-    return (
-        <div>
-            <div className={'container px-20'}>
-                <Breadcrumbs items={items} />
-            </div>
-            {children}
-        </div>
-    );
+export default function WorkLayout({ children }: BaseLayoutProps) {
+    const { slug } = useParams();
+    const { setContext: setCrumbContext, setItemName: setCrumbName } = useContext(BreadCrumbsContext);
+    const { data } = useSuspenseQuery<{ work: Work }>(GET_WORK_TITLE_BY_SLUG, { variables: { slug } });
+
+    useEffect(() => {
+        if (data) {
+            const {
+                work: { title },
+            } = data;
+
+            setCrumbContext!('works');
+            setCrumbName!(title);
+        }
+    });
+
+    return <div>{children}</div>;
 }
