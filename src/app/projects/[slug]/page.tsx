@@ -3,6 +3,7 @@ import { getAllPortfolios } from '@/app/queries/portfolios/get-all-portfolios';
 import { getPortfolioBySlug } from '@/app/queries/portfolios/get-portfolio-by-slug';
 import { get, isEmpty, map } from 'lodash';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 export const revalidate = 5;
 
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }: BasePageProps): Promise<Metad
     const slug = get(params, 'slug');
 
     if (isEmpty(slug)) {
-        return {};
+        notFound();
     }
 
     const portfolio = await getPortfolioBySlug(slug);

@@ -30,9 +30,13 @@ module.exports = {
             },
         },
     },
+    darkMode: 'class',
     variants: {
         fill: ['hover', 'focus'],
     },
     presets: [keepPreset],
-    plugins: [],
+    plugins: [require('daisyui')],
+    daisyui: {
+        themes: ['light', 'dark'],
+    },
 };

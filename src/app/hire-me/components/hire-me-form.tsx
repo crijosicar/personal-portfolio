@@ -1,39 +1,32 @@
 'use client';
 
-import { yupResolver } from '@hookform/resolvers/yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import * as yup from 'yup';
+import * as z from 'zod';
 
-type Inputs = {
-    fullName: string;
-    email: string;
-    topic: string;
-    message: string;
-};
+const contactSchema = z.object({
+    fullName: z.string(),
+    email: z.string().email(),
+    message: z.string(),
+    topic: z.string(),
+});
 
-const contactValidationSchema = yup
-    .object({
-        fullName: yup.string().required(),
-        email: yup.string().email().required(),
-        message: yup.string().required(),
-        topic: yup.string().required(),
-    })
-    .required();
+type ContactSchema = z.infer<typeof contactSchema>;
 
 export default function HireMeForm() {
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<Inputs>({
-        resolver: yupResolver(contactValidationSchema),
+    } = useForm<ContactSchema>({
+        resolver: zodResolver(contactSchema),
     });
 
     const capitalizeFirstLetter = (string = '') => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     };
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
+    const onSubmit: SubmitHandler<ContactSchema> = (data) => {
         console.log(data);
     };
 

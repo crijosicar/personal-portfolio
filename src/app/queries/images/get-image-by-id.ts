@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 import { get } from 'lodash';
 
-import gqlCoreAPIClient from '@/app/lib/apollo-coreapi-client';
+import { gqlCoreAPIClient } from '@/app/lib/apollo-coreapi-client';
 
 export const findImageById = gql`
     query GetImageById($imageId: ID!) {
@@ -19,7 +19,7 @@ export const findImageById = gql`
 `;
 
 export const getImageById = async (imageId: string) => {
-    const response = await gqlCoreAPIClient.query({
+    const response = await gqlCoreAPIClient().query({
         query: findImageById,
         variables: {
             imageId,
