@@ -12,10 +12,17 @@ import {
 } from 'keep-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+
+import { ThemeContext } from '@/app/context/theme-context';
 
 export default function NavbarHeader() {
     const [toggle, setToggle] = useState(false);
+    const { changeTheme } = useContext(ThemeContext);
+
+    useEffect(() => {
+        changeTheme(toggle ? 'dark' : 'light');
+    }, [toggle]);
 
     return (
         <Navbar>
