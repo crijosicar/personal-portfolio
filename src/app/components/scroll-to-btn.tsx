@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 
-import { useScrollWrapperContext } from '../context/scroll-wrapper';
+import { useScrollWrapperContext } from '@/context/scroll-wrapper';
 
 export default function ScrollToBtn() {
     const scrollWrapperContext = useScrollWrapperContext();

@@ -1,5 +1,3 @@
-'use client';
-
 import { Spinner } from 'keep-react';
 
 export default function Loading() {

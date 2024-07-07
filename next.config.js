@@ -22,7 +22,7 @@ module.exports = async (phase) => {
     return {
         swcMinify: true,
         reactStrictMode: true,
-        trailingSlash: true,
+        trailingSlash: false,
         images: { remotePatterns },
     };
 };

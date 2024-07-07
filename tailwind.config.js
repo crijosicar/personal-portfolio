@@ -35,7 +35,7 @@ module.exports = {
         fill: ['hover', 'focus'],
     },
     presets: [keepPreset],
-    plugins: [require('daisyui')],
+    plugins: [require('daisyui'), require('@headlessui/tailwindcss')],
     daisyui: {
         themes: false,
     },

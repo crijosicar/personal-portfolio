@@ -1,19 +1,9 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-    Button,
-    Input,
-    InputIcon,
-    Label,
-    Modal,
-    ModalBody,
-    ModalContent,
-    ModalFooter,
-    ModalIcon,
-    Textarea,
-} from 'keep-react';
-import { Envelope, Hand, User, WarningCircle } from 'phosphor-react';
+import classNames from 'classnames';
+import { Button, Input, Label, Modal, ModalBody, ModalContent, ModalFooter, ModalIcon, Textarea } from 'keep-react';
+import { Hand } from 'phosphor-react';
 import React, { useEffect, useRef, useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -40,6 +30,8 @@ export default function HomeContactForm() {
         resolver: zodResolver(contactSchema),
         defaultValues: { fullName: '', email: '', message: '' },
     });
+
+    console.log('HomeContactForm', { errors });
 
     useEffect(() => {
         if (isSubmitSuccessful) {
@@ -125,32 +117,26 @@ export default function HomeContactForm() {
                             name="fullName"
                             control={control}
                             render={({ field: { onChange: onChangeFullName, onBlur, value, ref, name } }) => (
-                                <fieldset className="relative max-w-md">
-                                    <Input
-                                        name={name}
-                                        className={'mt-1 rounded-none'}
-                                        placeholder="Your Name"
-                                        color={errors?.fullName ? 'error' : 'secondary'}
-                                        onBlur={onBlur}
-                                        onChange={(e) => {
-                                            onChangeFullName(e.target.value);
-                                        }}
-                                        value={value}
-                                        ref={(e) => {
-                                            ref(e);
-                                            fullNameRef.current = e; // you can still assign to ref
-                                        }}
-                                    />
-                                    <InputIcon>
-                                        {errors?.fullName ? (
-                                            <WarningCircle size={20} color="#FF574D" />
-                                        ) : (
-                                            <User size={20} color="#5E718D" />
-                                        )}
-                                    </InputIcon>
-                                </fieldset>
+                                <Input
+                                    name={name}
+                                    className={classNames({
+                                        'mx-1 rounded-none': true,
+                                        'border-2 border-rose-500': !!errors.fullName,
+                                    })}
+                                    placeholder="Your Name"
+                                    onBlur={onBlur}
+                                    onChange={(e) => {
+                                        onChangeFullName(e.target.value);
+                                    }}
+                                    value={value}
+                                    ref={(e) => {
+                                        ref(e);
+                                        fullNameRef.current = e;
+                                    }}
+                                />
                             )}
                         />
+                        <p className="text-xs italic text-red-500">{errors.fullName?.message}</p>
                     </div>
                     <div className="sm:col-span-4">
                         <Label htmlFor="email" className={'text-2xl text-tertiary'}>
@@ -160,32 +146,26 @@ export default function HomeContactForm() {
                             name="email"
                             control={control}
                             render={({ field: { onChange: onChangeEmail, onBlur, value, ref, name } }) => (
-                                <fieldset className="relative max-w-md">
-                                    <Input
-                                        name={name}
-                                        className={'mt-1 rounded-none'}
-                                        placeholder="your.email@mail.com"
-                                        color={errors?.email ? 'error' : 'secondary'}
-                                        onBlur={onBlur}
-                                        onChange={(e) => {
-                                            onChangeEmail(e.target.value);
-                                        }}
-                                        value={value}
-                                        ref={(e) => {
-                                            ref(e);
-                                            emailRef.current = e; // you can still assign to ref
-                                        }}
-                                    />
-                                    <InputIcon>
-                                        {errors?.email ? (
-                                            <WarningCircle size={20} color="#FF574D" />
-                                        ) : (
-                                            <Envelope size={20} color="#5E718D" />
-                                        )}
-                                    </InputIcon>
-                                </fieldset>
+                                <Input
+                                    name={name}
+                                    className={classNames({
+                                        'mx-1 rounded-none': true,
+                                        'border-2 border-rose-500': !!errors.email,
+                                    })}
+                                    placeholder="your.email@mail.com"
+                                    onBlur={onBlur}
+                                    onChange={(e) => {
+                                        onChangeEmail(e.target.value);
+                                    }}
+                                    value={value}
+                                    ref={(e) => {
+                                        ref(e);
+                                        emailRef.current = e;
+                                    }}
+                                />
                             )}
                         />
+                        <p className="text-xs italic text-red-500">{errors.email?.message}</p>
                     </div>
                     <div className="sm:col-span-4">
                         <Label htmlFor="message" className={'text-2xl text-tertiary'}>
@@ -197,10 +177,12 @@ export default function HomeContactForm() {
                             render={({ field: { onChange: onChangeMessage, onBlur, value, ref, name } }) => (
                                 <Textarea
                                     name={name}
-                                    className={'mt-1 rounded-none'}
-                                    placeholder="Leave a message..."
-                                    color={errors?.message ? 'error' : 'info'}
-                                    rows={4}
+                                    className={classNames({
+                                        'mx-1 rounded-none': true,
+                                        'border-2 border-rose-500': !!errors.message,
+                                    })}
+                                    placeholder="Tell me about your idea..."
+                                    rows={3}
                                     onBlur={onBlur}
                                     onChange={(e) => {
                                         onChangeMessage(e.target.value);
@@ -210,12 +192,13 @@ export default function HomeContactForm() {
                                 />
                             )}
                         />
+                        <p className="text-xs italic text-red-500">{errors.message?.message}</p>
                     </div>
                     <Button
                         size="xl"
                         type="submit"
                         color="primary"
-                        className="rounded-none border border-[#142966] hover:bg-secondary hover:text-white"
+                        className="mx-1 rounded-none border border-[#142966] text-[#142966] hover:bg-secondary hover:text-white dark:text-white dark:hover:text-gray-200"
                     >
                         Send
                         <svg
