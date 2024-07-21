@@ -27,7 +27,8 @@ export default async function Page() {
                             'slug',
                         ]);
                         const computedDate = `${moment(startDate).format('MMM YYYY')} - ${endDate ? moment(endDate).format('MMM YYYY') : 'Present'}`;
-                        return (
+                        
+return (
                             <li key={get(work, 'slug')}>
                                 <Link
                                     className={'flex text-primary hover:text-secondary'}

@@ -52,7 +52,8 @@ export default function HomeContactForm() {
 
         if (contactResponse.status !== 200) {
             await contactResponse.json();
-            return;
+            
+return;
         }
 
         setIsModalOpen(true);
