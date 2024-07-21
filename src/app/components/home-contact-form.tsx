@@ -2,7 +2,21 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import classNames from 'classnames';
-import { Button, Input, Label, Modal, ModalBody, ModalContent, ModalFooter, ModalIcon, Textarea } from 'keep-react';
+import {
+    Button,
+    Input,
+    Label,
+    Modal,
+    ModalAction,
+    ModalBody,
+    ModalClose,
+    ModalContent,
+    ModalDescription,
+    ModalFooter,
+    ModalHeader,
+    ModalTitle,
+    Textarea,
+} from 'keep-react';
 import { Hand } from 'phosphor-react';
 import React, { useEffect, useRef, useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -52,8 +66,8 @@ export default function HomeContactForm() {
 
         if (contactResponse.status !== 200) {
             await contactResponse.json();
-            
-return;
+
+            return;
         }
 
         setIsModalOpen(true);
@@ -71,18 +85,26 @@ return;
 
     return (
         <div>
-            <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <ModalBody className="flex w-[30rem] flex-col items-center p-6 lg:p-8">
-                    <ModalIcon>
-                        <Hand size={28} color="#1B4DFF" />
-                    </ModalIcon>
+            <Modal>
+                <ModalAction asChild>
+                    <Button color="secondary" size="sm">
+                        Modal
+                    </Button>
+                </ModalAction>
+                <ModalBody>
                     <ModalContent>
-                        <p>Talk to you soon!</p>
-                        <div className="space-y-6">
-                            <p className="text-body-4 leading-relaxed text-metal-500">
-                                {"Thanks for contacting me, I'll get back to you in a few."}
-                            </p>
-                        </div>
+                        <ModalClose className="absolute right-4 top-4" />
+                        <ModalHeader>
+                            <div className="border-success-100 bg-success-50 text-success-500 flex h-20 w-20 items-center justify-center rounded-full border dark:border-metal-800 dark:bg-metal-800">
+                                <Hand size={28} color="#1B4DFF" />
+                            </div>
+                            <div className="space-y-1 text-center">
+                                <ModalTitle>Talk to you soon!</ModalTitle>
+                                <ModalDescription>
+                                    Thanks for contacting me, Iapos;ll get back to you in a few.{' '}
+                                </ModalDescription>
+                            </div>
+                        </ModalHeader>
                     </ModalContent>
                     <ModalFooter>
                         <Button
