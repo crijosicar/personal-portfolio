@@ -1,7 +1,6 @@
+import { gqlCoreAPIClient } from '@/lib/apollo-client';
 import { gql } from '@apollo/client';
 import { get } from 'lodash';
-
-import gqlCoreAPIClient from '@/app/lib/apollo-coreapi-client';
 
 export const findLinkById = gql`
     query GetLinkById($linkId: ID!) {
@@ -16,7 +15,7 @@ export const findLinkById = gql`
 `;
 
 export const getLinkById = async (linkId: string) => {
-    const response = await gqlCoreAPIClient.query({
+    const response = await gqlCoreAPIClient().query({
         query: findLinkById,
         variables: {
             linkId,

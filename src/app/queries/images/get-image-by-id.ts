@@ -1,7 +1,6 @@
+import { gqlCoreAPIClient } from '@/lib/apollo-client';
 import { gql } from '@apollo/client';
 import { get } from 'lodash';
-
-import { gqlCoreAPIClient } from '@/app/lib/apollo-coreapi-client';
 
 export const findImageById = gql`
     query GetImageById($imageId: ID!) {

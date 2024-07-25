@@ -1,5 +1,8 @@
 'use client';
 
+import { ContactTopicType } from '@/entities/contact';
+import { CREATE_CONTACT } from '@/queries/contacts/create-contact';
+import { useMutation } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import classNames from 'classnames';
 import { Button, Input, Label, Modal, ModalBody, ModalContent, ModalFooter, ModalIcon, Textarea } from 'keep-react';
@@ -20,6 +23,7 @@ export default function HomeContactForm() {
     const fullNameRef = useRef<HTMLInputElement | null>(null);
     const emailRef = useRef<HTMLInputElement | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [createContact, { error: createContactError }] = useMutation<ContactSchema>(CREATE_CONTACT);
 
     const {
         reset,
@@ -31,8 +35,6 @@ export default function HomeContactForm() {
         defaultValues: { fullName: '', email: '', message: '' },
     });
 
-    console.log('HomeContactForm', { errors });
-
     useEffect(() => {
         if (isSubmitSuccessful) {
             resetFormFields();
@@ -43,16 +45,17 @@ export default function HomeContactForm() {
         // Guard clause to validate form
         if (!isValid) return;
 
-        const contactResponse = await fetch('/api/contacts', {
-            method: 'POST',
-            cache: 'no-cache',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
+        await createContact({
+            variables: {
+                contact: {
+                    ...data,
+                    topic: ContactTopicType.SOFTWARE_DESIGN,
+                },
+            },
         });
 
-        if (contactResponse.status !== 200) {
-            await contactResponse.json();
-            return;
+        if (createContactError) {
+            throw new Error('');
         }
 
         setIsModalOpen(true);
@@ -110,7 +113,7 @@ export default function HomeContactForm() {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="space-y-5">
                     <div className="sm:col-span-4">
-                        <Label htmlFor="fullName" className={'text-2xl text-tertiary'}>
+                        <Label htmlFor="fullName" className={'text-tertiary text-2xl'}>
                             Name
                         </Label>
                         <Controller
@@ -136,10 +139,10 @@ export default function HomeContactForm() {
                                 />
                             )}
                         />
-                        <p className="text-xs italic text-red-500">{errors.fullName?.message}</p>
+                        <p className="mt-2 text-xs italic text-red-500">{errors.fullName?.message}</p>
                     </div>
                     <div className="sm:col-span-4">
-                        <Label htmlFor="email" className={'text-2xl text-tertiary'}>
+                        <Label htmlFor="email" className={'text-tertiary text-2xl'}>
                             Email
                         </Label>
                         <Controller
@@ -165,10 +168,10 @@ export default function HomeContactForm() {
                                 />
                             )}
                         />
-                        <p className="text-xs italic text-red-500">{errors.email?.message}</p>
+                        <p className="mt-2 text-xs italic text-red-500">{errors.email?.message}</p>
                     </div>
                     <div className="sm:col-span-4">
-                        <Label htmlFor="message" className={'text-2xl text-tertiary'}>
+                        <Label htmlFor="message" className={'text-tertiary text-2xl'}>
                             Message
                         </Label>
                         <Controller
@@ -192,7 +195,7 @@ export default function HomeContactForm() {
                                 />
                             )}
                         />
-                        <p className="text-xs italic text-red-500">{errors.message?.message}</p>
+                        <p className="mt-2 text-xs italic text-red-500">{errors.message?.message}</p>
                     </div>
                     <Button
                         size="xl"

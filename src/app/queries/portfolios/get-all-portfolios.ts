@@ -1,7 +1,6 @@
+import { gqlCoreAPIClient } from '@/lib/apollo-client';
 import { gql } from '@apollo/client';
 import { get } from 'lodash';
-
-import gqlCoreAPIClient from '@/app/lib/apollo-coreapi-client';
 
 export const findAllPortfolios = gql`
     query GetAllPortfolios {
@@ -30,7 +29,7 @@ export const findAllPortfolios = gql`
 `;
 
 export const getAllPortfolios = async () => {
-    const { data } = await gqlCoreAPIClient.query({
+    const { data } = await gqlCoreAPIClient().query({
         query: findAllPortfolios,
     });
 

@@ -1,7 +1,6 @@
+import { gqlCoreAPIClient } from '@/lib/apollo-client';
 import { gql } from '@apollo/client';
 import { get } from 'lodash';
-
-import gqlCoreAPIClient from '@/app/lib/apollo-coreapi-client';
 
 export const findPortfolioBySlug = gql`
     query GetPortfolioBySlug($slug: String!) {
@@ -29,7 +28,7 @@ export const findPortfolioBySlug = gql`
 `;
 
 export const getPortfolioBySlug = async (slug: string): Promise<any> => {
-    const { data } = await gqlCoreAPIClient.query({
+    const { data } = await gqlCoreAPIClient().query({
         query: findPortfolioBySlug,
         variables: { slug },
     });

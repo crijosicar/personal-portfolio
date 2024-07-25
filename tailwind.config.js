@@ -37,6 +37,6 @@ module.exports = {
     presets: [keepPreset],
     plugins: [require('daisyui'), require('@headlessui/tailwindcss')],
     daisyui: {
-        themes: false,
+        themes: ['light', 'dark'],
     },
 };
