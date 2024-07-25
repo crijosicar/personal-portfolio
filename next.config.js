@@ -4,6 +4,7 @@ module.exports = async () => {
         reactStrictMode: true,
         trailingSlash: false,
         images: {
+            unoptimized: true,
             remotePatterns: [
                 {
                     protocol: 'https',

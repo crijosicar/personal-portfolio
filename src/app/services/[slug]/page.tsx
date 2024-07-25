@@ -1,6 +1,7 @@
 import { BasePageProps } from '@/app/entities/base-page';
+import type { Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
     title: "Services | Cristian's Software Engineers",
 };
 

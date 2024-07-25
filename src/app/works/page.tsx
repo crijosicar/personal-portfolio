@@ -1,12 +1,13 @@
 import { getAllWorks } from '@/app/queries/works/get-all-works';
 import { get, pick } from 'lodash';
 import moment from 'moment/moment';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import React from 'react';
 
 export const revalidate = 5;
 
-export const metadata = {
+export const metadata: Metadata = {
     title: 'Works | Cristians Software Engineers',
 };
 
@@ -27,6 +28,7 @@ export default async function Page() {
                             'slug',
                         ]);
                         const computedDate = `${moment(startDate).format('MMM YYYY')} - ${endDate ? moment(endDate).format('MMM YYYY') : 'Present'}`;
+
                         return (
                             <li key={get(work, 'slug')}>
                                 <Link

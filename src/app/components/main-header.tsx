@@ -26,7 +26,7 @@ export default function MainHeader() {
                         <NavbarItem active={pathname === '/hire-me'}>
                             <Link href={'/hire-me'}>
                                 <div className={'flex items-center justify-between gap-2'}>
-                                    Let's work
+                                    Let&apos;s work
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 24 24"
@@ -61,7 +61,7 @@ export default function MainHeader() {
                         <NavbarItem active={pathname === '/hire-me'}>
                             <Link href={'/hire-me'}>
                                 <div className={'flex items-center justify-between gap-2'}>
-                                    Let's work
+                                    Let&apos;s work
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 24 24"
