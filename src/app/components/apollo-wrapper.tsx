@@ -5,7 +5,7 @@ import { HttpLink } from '@apollo/client';
 import { ApolloClient, ApolloNextAppProvider, InMemoryCache } from '@apollo/experimental-nextjs-app-support';
 import React from 'react';
 
-export const makeClient = (): ApolloClient<unknown> => {
+const makeClient = (): ApolloClient<unknown> => {
     const httpLink = new HttpLink({
         uri: NEXT_PUBLIC_CORE_API_URL,
         fetchOptions: { cache: 'no-store' },
